@@ -1,5 +1,8 @@
 package soccerLeague;
 
+import java.util.List;
+
+
 public interface Position {
-	public void getStats();
+	public List<String> getPositionsPlayed();
 }

@@ -1,25 +1,33 @@
 package soccerLeague;
 
 
-import com.google.appengine.api.users.User;
+import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import com.google.appengine.api.users.User;
+import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
 public class RegisteredUser {
+	static {
+        ObjectifyService.register(RegisteredUser.class);
+
+    }
 	private String firstName;
 	private String lastName;
 	@Id private String email;
 	private String phoneNumber;
+	private String address;
 	//needed for objectify//
-	private RegisteredUser(){}
-	RegisteredUser(String w, String x, String y, String z){
-		firstName=w;
-		lastName=x;
-		email=y;
-		phoneNumber=z;
+	public RegisteredUser(){}
+	public RegisteredUser(String v,String w, String x, String y, String z){
+		firstName=v;
+		lastName=w;
+		email=x;
+		phoneNumber=y;
+		address=z;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -45,5 +53,29 @@ public class RegisteredUser {
 	public void setPhoneNumber(String  phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
+	public String getAddress() {
+		return this.address;
+	}
+	public void setAddress(String addr) {
+		this.address=addr;	
+	}
+	public void setBasicInfo(String first, String last, String email, String phoneNumber, String addr) {
+		this.setFirstName(first);
+		this.setLastName(last);
+		this.setEmail(email);
+		this.setPhoneNumber(phoneNumber);
+		this.setAddress(addr);	
+	}
+	public void putRegisteredUserData(){
+		ofy().save().entity(this).now();
+	}
+	public void updateRegisteredUserName(String update){
+		this.setFirstName(update);
+		ofy().save().entity(this).now();	
+	}
+	public RegisteredUser getRegisteredUserData(String email){
+		RegisteredUser bar=ofy().load().type(RegisteredUser.class).id(email).now();
+		return bar;
+	}
+
 }

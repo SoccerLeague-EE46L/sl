@@ -18,28 +18,45 @@ import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
+
+import com.googlecode.objectify.LoadResult;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Ref;
 
 public class DataTransfer {
-	static {
-        ObjectifyService.register(RegisteredUser.class);
-    }
-	DatastoreService datastore= DatastoreServiceFactory.getDatastoreService();
+	
+	//DatastoreService datastore= DatastoreServiceFactory.getDatastoreService();
+	private static DataTransfer myDataBase= new DataTransfer();
+	private DataTransfer(){
+	}
+	public static DataTransfer getDataTransfer(){
+		return myDataBase;
+	}
+	
 	public void putRegisteredUserData(RegisteredUser x){
 		ofy().save().entity(x).now();
+		
 	}
 	public void updateRegisteredUserName(RegisteredUser x, String update){
-		Ref<RegisteredUser> foo=ofy().load().type(RegisteredUser.class).id(x.getEmail());
-		RegisteredUser bar=foo.getValue();
-		bar.setFirstName(update);
-		ofy().save().entity(bar).now();	
+		x.setFirstName(update);
+		ofy().save().entity(x).now();	
 	}
 	public RegisteredUser getRegisteredUserData(String email){
-		Ref<RegisteredUser> foo=ofy().load().type(RegisteredUser.class).id(email);
-		RegisteredUser bar=foo.getValue();
+		RegisteredUser bar=ofy().load().type(RegisteredUser.class).id(email).now();
 		return bar;
-
+	}
+	public void putSoccerPlayerData(SoccerPlayer x){
+		System.out.println("about to safe");
+		ofy().save().entity(x).now();
+		System.out.println("heres the problem");
+	}
+	public void updateSoccerPlayerName(SoccerPlayer x, String update){
+		x.setFirstName(update);
+		ofy().save().entity(x).now();	
+	}
+	public SoccerPlayer getSoccerPlayerData(String email){
+		SoccerPlayer bar=ofy().load().type(SoccerPlayer.class).id(email).now();
+		return bar;
 	}
 
 }
