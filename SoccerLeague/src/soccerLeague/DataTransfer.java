@@ -48,7 +48,7 @@ public class DataTransfer {
 	public void putSoccerPlayerData(SoccerPlayer x){
 		System.out.println("about to safe");
 		ofy().save().entity(x).now();
-		System.out.println("heres the problem");
+		System.out.println("ok it was able to safe it");
 	}
 	public void updateSoccerPlayerName(SoccerPlayer x, String update){
 		x.setFirstName(update);

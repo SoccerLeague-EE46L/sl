@@ -3,6 +3,8 @@ package soccerLeague;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import java.util.List;
+
 import com.google.appengine.api.users.User;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
@@ -10,7 +12,7 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
 @Entity
-public class RegisteredUser {
+public abstract class RegisteredUser {
 	static {
         ObjectifyService.register(RegisteredUser.class);
 
@@ -59,23 +61,29 @@ public class RegisteredUser {
 	public void setAddress(String addr) {
 		this.address=addr;	
 	}
-	public void setBasicInfo(String first, String last, String email, String phoneNumber, String addr) {
+	public void setBasicInfo(String first, String last, String email, String phoneNumber, String addr,List<String>pos) {
 		this.setFirstName(first);
 		this.setLastName(last);
 		this.setEmail(email);
 		this.setPhoneNumber(phoneNumber);
 		this.setAddress(addr);	
+		this.setPosition(pos);
+		this.setStats();
 	}
+	public abstract void setPosition(List<String> pos);
+	public abstract void setStats();
+	
 	public void putRegisteredUserData(){
-		ofy().save().entity(this).now();
+		DataTransfer myData= DataTransfer.getDataTransfer();
+		myData.putRegisteredUserData(this);
 	}
 	public void updateRegisteredUserName(String update){
-		this.setFirstName(update);
-		ofy().save().entity(this).now();	
+		DataTransfer myData= DataTransfer.getDataTransfer();
+		myData.updateRegisteredUserName(this, update);
 	}
 	public RegisteredUser getRegisteredUserData(String email){
-		RegisteredUser bar=ofy().load().type(RegisteredUser.class).id(email).now();
-		return bar;
+		DataTransfer myData= DataTransfer.getDataTransfer();
+		return myData.getRegisteredUserData(email);
 	}
 
 }

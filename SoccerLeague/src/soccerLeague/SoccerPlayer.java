@@ -20,19 +20,10 @@ public class SoccerPlayer extends RegisteredUser{
 	private Integer jerseyNumber;
 //	private Team team;
 	private PersonalSoccerStats myStats;
-	private SoccerPlayer(){
+	public SoccerPlayer(){
 		super(null,null,null,null,null);
 };
-	public SoccerPlayer(String first, String last, String email, String phone, String addr,List<String> pos) {
-		super(first,last,email,phone,addr);
-		System.out.println("ok its good so far");
-		System.out.println(pos.get(0));
-		System.out.println(email);
-		position= new SoccerPosition(pos,email);
-		System.out.println("it created a position");
-		myStats= new PersonalSoccerStats(email);
-		System.out.println("it created stats");
-	}
+
 	public List<String> getPositionsPlayed() {
 		return position.getPositionsPlayed();
 	}
@@ -66,19 +57,26 @@ public class SoccerPlayer extends RegisteredUser{
 		this.myStats.setCleanSheets(tempStats.getCleanSheets());
 		this.myStats.setGamesPlayed(tempStats.getGamesPlayed());
 	}
+	public void setPosition(List<String> pos) {
+		position= new SoccerPosition(pos);
+		System.out.println("it created a position");
+	}
+	public void setStats(){
+		myStats= new PersonalSoccerStats();
+	}
 	public void putRegisteredUserData(){
-		System.out.println("about to safe");
-		System.out.println("were in soccerPlayer class");
-		ofy().save().entity(this).now();
-		System.out.println("heres the problem");
+		DataTransfer myData= DataTransfer.getDataTransfer();
+		myData.putSoccerPlayerData(this);
 	}
 	public void updateRegisteredUserName(String update){
-		this.setFirstName(update);
-		ofy().save().entity(this).now();	
+		DataTransfer myData= DataTransfer.getDataTransfer();
+		myData.updateSoccerPlayerName(this, update);
 	}
-	public SoccerPlayer getSoccerPlayerData(String email){
-		SoccerPlayer bar=ofy().load().type(SoccerPlayer.class).id(email).now();
-		return bar;
+	public SoccerPlayer getRegisteredUserData(String email){
+		DataTransfer myData= DataTransfer.getDataTransfer();
+		return myData.getSoccerPlayerData(email);
 	}
+
+	
 
 }

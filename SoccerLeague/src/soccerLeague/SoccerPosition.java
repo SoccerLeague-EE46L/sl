@@ -9,13 +9,13 @@ import com.googlecode.objectify.annotation.Subclass;
 
 @Subclass
 public class SoccerPosition implements Position {
-//	static {
-//        ObjectifyService.register(SoccerPosition.class); 
-//    }
+	static {
+        ObjectifyService.register(SoccerPosition.class); 
+    }
 	private List<String> positionsPlayed;
-	//@Id private String dummyID;
-	//private SoccerPosition(){}
-	public SoccerPosition(List<String> pos,String email){
+	@Id private String dummyID;
+	private SoccerPosition(){}
+	public SoccerPosition(List<String> pos){
 		System.out.println("constructor about to run");
 		positionsPlayed=pos;
 		//dummyID=email+"b";

@@ -22,19 +22,19 @@ public class SoccerLeagueServlet extends HttpServlet {
 		List<String> temp= new ArrayList<>();
 		temp.add("defender");
 		temp.add("midfielder");
-		SoccerPlayer dummy= new SoccerPlayer("aldair","sanchez","aldsan512@yahoo.com","5129021114","508 e howard lane",temp );
-		myData.putSoccerPlayerData(dummy);
-		SoccerPlayer foo = myData.getSoccerPlayerData("aldsan512@yahoo.com");
+		Registration.createUser("soccerLeague.SoccerPlayer","aldair","sanchez","5129021114","508 e howard lane",temp );
+		System.out.println("created it the user");
+		SoccerPlayer foo = myData.getSoccerPlayerData("test@example.com");
 		if(foo==null){
 			resp.setContentType("text/plain");
             resp.getWriter().println("Hello, unknown user");
 		}
 		else{
 		resp.setContentType("text/plain");
-        resp.getWriter().println("Hello, " + foo.getFirstName()+ "here is all your info"+ foo.getLastName()+ foo.getMyStats().getGamesPlayed());
+        resp.getWriter().println("Hello, " + foo.getFirstName()+ "here is all your info"+ foo.getLastName()+ foo.getPositionsPlayed().get(0)+ foo.getPositionsPlayed().get(1));
 		}
-		myData.updateSoccerPlayerName(dummy, "Ramiro");
-		foo = myData.getSoccerPlayerData("aldsan512@yahoo.com");
+		foo.updateRegisteredUserName("Ramiro");
+		foo = (SoccerPlayer) myData.getRegisteredUserData("test@example.com");
 		if(foo==null){
 			resp.setContentType("text/plain");
             resp.getWriter().println("Hello, unknown user");

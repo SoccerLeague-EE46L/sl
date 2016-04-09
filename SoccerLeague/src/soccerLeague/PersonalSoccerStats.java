@@ -17,10 +17,7 @@ public class PersonalSoccerStats implements PersonalStats{
 	private Integer redCards;
 	private Integer yellowCards;
 	private Integer cleanSheets;
-	private PersonalSoccerStats(){
-	}
-	public PersonalSoccerStats(String email){
-		dummyId=email+"a";
+	public PersonalSoccerStats(){
 	}
 	public Integer getGamesPlayed() {
 		return gamesPlayed;
