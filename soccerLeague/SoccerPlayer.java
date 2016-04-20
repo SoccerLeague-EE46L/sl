@@ -42,7 +42,7 @@ public class SoccerPlayer extends RegisteredUser{
 //	public void setTeam(Team team) {
 //		this.team = team;
 //	}
-	public PersonalStats getMyStats(){
+	public PersonalSoccerStats getMyStats(){
 		return myStats;
 	}
 	//may not need this one//

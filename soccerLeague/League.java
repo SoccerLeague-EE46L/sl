@@ -3,8 +3,8 @@ package soccerLeague;
 import java.util.ArrayList;
 import java.util.List;
 
-public interface TeamStats {
+public interface League {
 	
-public ArrayList<Integer> getStats();
+
 
 }

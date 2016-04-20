@@ -8,6 +8,7 @@ private  int NumMidFielder=0;
 private int NumDefender=0;
 private int NumAttacker=0;
 private int NumGoalie=0;
+private int Wins = 0;
 public SoccerTeam(SoccerPlayer  Coach){
 	this.Coach = Coach;
 	if(this.Coach.getPositionsPlayed()!=null)
@@ -36,6 +37,9 @@ public List<SoccerPlayer> getRoster(){
 }
 public  int getNumOfPlayers(){
 	return NumOfPlayers;
+}
+public int getWins(){
+	return Wins;
 }
 public void addPlayer(SoccerPlayer player){
 	Roster.add(player);
