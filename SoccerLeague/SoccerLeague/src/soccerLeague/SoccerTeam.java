@@ -11,6 +11,7 @@ public class SoccerTeam implements Team{
 	static {
         ObjectifyService.register(SoccerTeam.class); 
     }
+	private static DataTransfer myDataBase = DataTransfer.getDataTransfer();
 	private SoccerPlayer Coach;
 	private int NumOfPlayers;
 	private List<SoccerPlayer> Roster= new ArrayList<SoccerPlayer>();
@@ -18,7 +19,7 @@ public class SoccerTeam implements Team{
 	private int NumDefender=0;
 	private int NumAttacker=0;
 	private int NumGoalie=0;
-	SoccerTeamStats teamStats;
+	private SoccerTeamStats teamStats;
 	@Id private String teamName;
 	public SoccerTeam(SoccerPlayer  Coach, String teamName){
 		this.teamName=teamName;
@@ -79,7 +80,10 @@ public class SoccerTeam implements Team{
 	public void addPlayer(SoccerPlayer player){
 		Roster.add(player);
 		NumOfPlayers++;
-		List<String> playerPosition = player.getPositionsPlayed();
+		incRosterAvailability(player);
+	}
+	private void incRosterAvailability(SoccerPlayer x){
+		List<String> playerPosition = x.getPositionsPlayed();
 		for(int i = 0; i<playerPosition.size();i++ )
 		{
 			if(playerPosition.get(i).equals("MidFielder"))
@@ -91,6 +95,38 @@ public class SoccerTeam implements Team{
 			if(playerPosition.get(i).equals("Goalie"))
 				NumGoalie++;
 		}
+	}
+	private void decRosterAvailability(SoccerPlayer x){
+		List<String> playerPosition = x.getPositionsPlayed();
+		for(int i = 0; i<playerPosition.size();i++ )
+		{
+			if(playerPosition.get(i).equals("MidFielder"))
+				NumMidFielder--;
+			if(playerPosition.get(i).equals("Attacker"))
+				NumAttacker--;
+			if(playerPosition.get(i).equals("Defender"))
+				NumDefender--;
+			if(playerPosition.get(i).equals("Goalie"))
+				NumGoalie--;
+		}
+	}
+	@Override
+	public void removePlayer(String email) {
+		SoccerPlayer player=myDataBase.getSoccerPlayerData(email);
+		if(getCoach().getEmail().equals(email)){
+			this.removeCoach(email);
+		}
+		decRosterAvailability(player);
+		this.NumOfPlayers--;
+		Roster.remove(player);
+	
+	}
+	@Override
+	public void removeCoach(String email) {
+		SoccerPlayer player=myDataBase.getSoccerPlayerData(email);
+		player.setCoach(false);
+		this.Coach=null;
+		
 	}
 }
 

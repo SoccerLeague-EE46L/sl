@@ -29,9 +29,7 @@ public class Registration {
 		user.setBasicInfo(first, last, email,phoneNumber, addr,pos);
 		user.putRegisteredUserData();
 	}
-	public static void registerTeam(){
-	//need to do it
-	}
+		
 	public static String getEmail(){
 //		  UserService userService = UserServiceFactory.getUserService();
 //	        User user = userService.getCurrentUser();

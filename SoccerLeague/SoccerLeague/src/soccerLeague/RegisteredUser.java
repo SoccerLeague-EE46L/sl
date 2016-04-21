@@ -14,9 +14,9 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public abstract class RegisteredUser {
 	static {
-        ObjectifyService.register(RegisteredUser.class);
+		ObjectifyService.register(RegisteredUser.class);
 
-    }
+	}
 	private String firstName;
 	private String lastName;
 	@Id private String email;
@@ -72,7 +72,7 @@ public abstract class RegisteredUser {
 	}
 	public abstract void setPosition(List<String> pos);
 	public abstract void setStats();
-	
+
 	public void putRegisteredUserData(){
 		DataTransfer myData= DataTransfer.getDataTransfer();
 		myData.putRegisteredUserData(this);

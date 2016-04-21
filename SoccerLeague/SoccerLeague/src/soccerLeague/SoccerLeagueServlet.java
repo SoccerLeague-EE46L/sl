@@ -45,7 +45,7 @@ public class SoccerLeagueServlet extends HttpServlet {
 		}
 		else{
 		resp.setContentType("text/plain");
-        resp.getWriter().println("Hello, " + foo.getFirstName());
+        resp.getWriter().println("Hello, " + foo.getFirstName()+ "are you the coach: " +foo.isCoach());
         resp.getWriter().println("the manager of" +foo.getTeam().getTeamName());
         resp.getWriter().println(" is " +foo.getTeam().getCoach().getFirstName());
 
