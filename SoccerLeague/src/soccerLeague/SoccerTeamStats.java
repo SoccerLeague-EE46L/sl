@@ -5,15 +5,25 @@ import java.util.List;
 
 public class SoccerTeamStats implements TeamStats {
 	
-private int Wins;
-private int Losses;
+private int wins;
+private int losses;
 
 	@Override
-	public ArrayList<Integer> getStats() {
-		ArrayList<Integer> Stats = new ArrayList<Integer>();
-		Stats.add(Wins);
-		Stats.add(Losses);
-		return Stats;
+	public Integer getLosses() {
+		return losses;
+	}
+
+	public void setWins(int wins) {
+		this.wins = wins;
+	}
+
+	public void setLosses(int losses) {
+		this.losses = losses;
+	}
+
+	@Override
+	public Integer getWins() {
+		return wins;
 	}
 
 }

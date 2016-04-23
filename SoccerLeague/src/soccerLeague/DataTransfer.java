@@ -58,5 +58,18 @@ public class DataTransfer {
 		SoccerPlayer bar=ofy().load().type(SoccerPlayer.class).id(email).now();
 		return bar;
 	}
+	public void putSoccerTeam(SoccerTeam x){
+		ofy().save().entity(x).now();
+		
+	}
+	public boolean isInDataBase(String email){
+		System.out.println(email);
+		if(ofy().load().type(SoccerPlayer.class).id(email).now()==null){
+			System.out.println("it is not in the database");
+			return false;
+		}
+		System.out.println("it is in the database");
+		return true;
+	}
 
 }

@@ -22,7 +22,7 @@ public class SoccerLeagueServlet extends HttpServlet {
 		List<String> temp= new ArrayList<>();
 		temp.add("defender");
 		temp.add("midfielder");
-		Registration.createUser("soccerLeague.SoccerPlayer","aldair","sanchez","5129021114","508 e howard lane",temp );
+	//	Registration.createUser("soccerLeague.SoccerPlayer","aldair","sanchez","5129021114","508 e howard lane",temp );
 		System.out.println("created it the user");
 		SoccerPlayer foo = myData.getSoccerPlayerData("test@example.com");
 		if(foo==null){
@@ -33,6 +33,10 @@ public class SoccerLeagueServlet extends HttpServlet {
 		resp.setContentType("text/plain");
         resp.getWriter().println("Hello, " + foo.getFirstName()+ "here is all your info"+ foo.getLastName()+ foo.getPositionsPlayed().get(0)+ foo.getPositionsPlayed().get(1));
 		}
+		System.out.println("about to make the team");
+		SoccerTeam x= new SoccerTeam(foo, "ut longhorns");
+		System.out.println("created the team");
+		foo.makeTeam("UT Longhorns");
 		foo.updateRegisteredUserName("Ramiro");
 		foo = (SoccerPlayer) myData.getRegisteredUserData("test@example.com");
 		if(foo==null){
@@ -41,7 +45,10 @@ public class SoccerLeagueServlet extends HttpServlet {
 		}
 		else{
 		resp.setContentType("text/plain");
-        resp.getWriter().println("Hello, " + foo.getFirstName());
+        resp.getWriter().println("Hello, " + foo.getFirstName()+ "are you the coach: " +foo.isCoach());
+        resp.getWriter().println("the manager of" +foo.getTeam().getTeamName());
+        resp.getWriter().println(" is " +foo.getTeam().getCoach().getFirstName());
+
 		}
 	}
 }

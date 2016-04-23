@@ -5,12 +5,8 @@ import java.util.List;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
-@Entity
+
 public class PersonalSoccerStats implements PersonalStats{
-	static {
-        ObjectifyService.register(PersonalSoccerStats.class); 
-    }
-	@Id private String dummyId;
 	private Integer gamesPlayed;
 	private Integer assists;
 	private Integer goals;

@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface TeamStats {
 	
-public ArrayList<Integer> getStats();
+public Integer getLosses();
+public Integer getWins();
+
 
 }
