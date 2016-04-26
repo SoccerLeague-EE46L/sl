@@ -1,7 +1,7 @@
 package soccerLeague;
 
 /*
-this is a comment to see if GitHub is working
+this is a comment to see if GitHub is working i would like to see if this works some more wow i am confused
 */
 
 import java.util.ArrayList;
