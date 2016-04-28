@@ -13,17 +13,13 @@ import com.googlecode.objectify.annotation.Id;
 
 @Entity
 public abstract class RegisteredUser {
-	static {
-		ObjectifyService.register(RegisteredUser.class);
-
-	}
 	private String firstName;
 	private String lastName;
 	@Id private String email;
 	private String phoneNumber;
 	private String address;
 	//needed for objectify//
-	public RegisteredUser(){}
+	protected RegisteredUser(){}
 	public RegisteredUser(String v,String w, String x, String y, String z){
 		firstName=v;
 		lastName=w;

@@ -3,14 +3,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.googlecode.objectify.ObjectifyService;
+import com.googlecode.objectify.annotation.Container;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Subclass;
 @Entity
 //classes that implement an interface are saved as entities
-public class SoccerTeam implements Team{
+public class SoccerTeam {
 	static {
         ObjectifyService.register(SoccerTeam.class); 
     }
+	@Id protected String teamName;
 	private static DataTransfer myDataBase = DataTransfer.getDataTransfer();
 	private SoccerPlayer Coach;
 	private int NumOfPlayers;
@@ -20,29 +23,34 @@ public class SoccerTeam implements Team{
 	private int NumAttacker=0;
 	private int NumGoalie=0;
 	private SoccerTeamStats teamStats;
-	@Id private String teamName;
+	private SoccerTeam(){}
 	public SoccerTeam(SoccerPlayer  Coach, String teamName){
-		this.teamName=teamName;
-		this.Coach = Coach;
-		System.out.println("inside soccerteam constructor");
-		if(this.Coach.getPositionsPlayed()!=null)
-		{
-			NumOfPlayers++;
-			System.out.println("is getting the positions a problem");
-			List<String> coachPosition = Coach.getPositionsPlayed();
-			System.out.println("gettimg positions is not a problem");
-			for(int i = 0; i<coachPosition.size();i++ )
+		if(teamName.equals("not a team")){
+			teamName="abcd";
+		}
+		else{
+			this.teamName=teamName;
+			this.Coach = Coach;
+			System.out.println("inside soccerteam constructor");
+			if(this.Coach.getPositionsPlayed()!=null)
 			{
-				if(coachPosition.get(i).equals("MidFielder"))
-					NumMidFielder++;
-				if(coachPosition.get(i).equals("Attacker"))
-					NumAttacker++;
-				if(coachPosition.get(i).equals("Defender"))
-					NumDefender++;
-				if(coachPosition.get(i).equals("Goalie"))
-					NumGoalie++;
+				NumOfPlayers++;
+				System.out.println("is getting the positions a problem");
+				List<String> coachPosition = Coach.getPositionsPlayed();
+				System.out.println("gettimg positions is not a problem");
+				for(int i = 0; i<coachPosition.size();i++ )
+				{
+					if(coachPosition.get(i).equals("MidFielder"))
+						NumMidFielder++;
+					if(coachPosition.get(i).equals("Attacker"))
+						NumAttacker++;
+					if(coachPosition.get(i).equals("Defender"))
+						NumDefender++;
+					if(coachPosition.get(i).equals("Goalie"))
+						NumGoalie++;
+				}
+				Roster.add(Coach);
 			}
-			Roster.add(Coach);
 		}
 		System.out.println("made it to the end ");
 	}
@@ -110,7 +118,7 @@ public class SoccerTeam implements Team{
 				NumGoalie--;
 		}
 	}
-	@Override
+
 	public void removePlayer(String email) {
 		SoccerPlayer player=myDataBase.getSoccerPlayerData(email);
 		if(getCoach().getEmail().equals(email)){
@@ -121,7 +129,6 @@ public class SoccerTeam implements Team{
 		Roster.remove(player);
 	
 	}
-	@Override
 	public void removeCoach(String email) {
 		SoccerPlayer player=myDataBase.getSoccerPlayerData(email);
 		player.setCoach(false);

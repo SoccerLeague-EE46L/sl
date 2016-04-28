@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
+import com.googlecode.objectify.ObjectifyService;
 
 public class RegisterServlet extends HttpServlet{
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)throws IOException {
@@ -25,7 +26,7 @@ public class RegisterServlet extends HttpServlet{
 		System.out.println("was able to recognize sport");
 		
 		try {
-			user= (RegisteredUser) userClass.newInstance();
+			user= userClass.newInstance();
 			System.out.println("creating new instance");
 		} catch (InstantiationException | IllegalAccessException e) {
 			// TODO Auto-generated catch block

@@ -1,10 +1,14 @@
 package soccerLeague;
 
-public interface Team {
-public RegisteredUser getCoach();
-public String getTeamName();
-public void removePlayer(String email);
-public void removeCoach(String email);
+import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Id;
+
+
+public abstract class Team {
+	public abstract RegisteredUser getCoach();
+	public abstract String getTeamName();
+	public abstract void removePlayer(String email);
+	public abstract void removeCoach(String email);
 
 }
- 	
+

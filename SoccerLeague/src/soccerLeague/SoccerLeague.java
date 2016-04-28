@@ -1,9 +1,5 @@
 package soccerLeague;
 
-/*
-this is a comment to see if GitHub is working i would like to see if this works some more wow i am confused hey this is another change
-*/
-
 import java.util.ArrayList;
 import java.util.List;
 
