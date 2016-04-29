@@ -10,7 +10,7 @@ public abstract class Team {
 	public abstract void removePlayer(String email);
 	public abstract void removeCoach(String email);
 	
-	//"Hello Wodfgkrld"
+	//"Hello Wodfgkrsssld"
 
 }
 
