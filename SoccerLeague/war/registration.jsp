@@ -11,10 +11,18 @@
   <%
       UserService userService = UserServiceFactory.getUserService();
       User user = userService.getCurrentUser();
-      String email= user.getEmail();
+      String email;
+      if(user==null){
+      email="notAnEmail";
+      System.out.println(email);
+    	}
+    else{
+    email=user.getEmail();
+          System.out.println(email);
+  }
       DataTransfer myDataBase= DataTransfer.getDataTransfer();
       System.out.println("testing statement after registration");
-      if (user != null && !(myDataBase.isInDataBase(email))) {
+      if (user != null && (!myDataBase.isInDataBase(email))) {
 		System.out.println("testing print statement: inside registration jsp");
 		response.sendRedirect("registrationForm.jsp");
       %>
