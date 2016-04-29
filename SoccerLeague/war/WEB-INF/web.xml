@@ -31,6 +31,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>Register</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>Maketeam</servlet-name>
+		<servlet-class>soccerLeague.MakeTeamServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Maketeam</servlet-name>
+		<url-pattern>/maketeam</url-pattern>
+	</servlet-mapping>
+	
 
 
 

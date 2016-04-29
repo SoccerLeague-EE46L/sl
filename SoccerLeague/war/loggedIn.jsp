@@ -6,6 +6,8 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import= "soccerLeague.DataTransfer" %>
+
 
       
 
@@ -21,12 +23,25 @@
 			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 				<nav><ul>
 					<li><a href="index.html">home</a></li>
-					<li><a href="statistics.html">statistics</a></li>
-					<li><a href="calendar.html">calendar</a></li>
-					<li><a href="registration.jsp">Register</a></li>
-					<li><a href="contact.html">contact us</a></li>
-					<li><a href="LogIn.html">Log In</a></li>
-					<li><a href="soccerleague">SoccerLeague</a></li>
+						<li><a href="statistics.html">statistics</a></li>
+						<li><a href="calendar.html">calendar</a></li>
+						<li><a href="contact.html">contact us</a></li>
+						<li>
+						<div class="dropdown">
+						<button class="dropbtn">Profile</button>
+						<div class="dropdown-content">
+						<a href="profile.jsp">View Profile</a>
+						<a href="personalStats.jsp">View Personal Stats</a>
+						<a href="teamStats.jsp">View Team Stats</a>
+						<a href="maketeam">Make Team</a>
+						<a href="index.jsp">Look For Team</a>
+						</div>
+						</div>
+						</li>
+						<li><a href="profile.jsp">Profile</a></li>
+					<li><a href="LogIn.html">Log Out</a></li>
+
+
 					
 				</ul></nav>
 		</header>

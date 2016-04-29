@@ -33,28 +33,26 @@ public List<SoccerPlayer> getTopStats(){
 	{
 		for(int j = 0; j< Teams.get(i).getRoster().size();j++)
 		{
-			SoccerPlayer tempPlayer = new SoccerPlayer();
-			tempPlayer.getRegisteredUserData(Teams.get(i).getRoster().get(j));
-			if(  tempPlayer.getMyStats().getAssists() > topassists)
+			if(Teams.get(i).getRoster().get(j).getMyStats().getAssists() > topassists)
 			{
-				topassists = tempPlayer.getMyStats().getAssists();
-				 topPlayers.add( tempPlayer);
+				topassists = Teams.get(i).getRoster().get(j).getMyStats().getAssists();
+				 topPlayers.add( Teams.get(i).getRoster().get(j));
 				
 			}
-			if(tempPlayer.getMyStats().getGoals()> topgoals)
+			if(Teams.get(i).getRoster().get(j).getMyStats().getGoals()> topgoals)
 			{
-				topgoals = tempPlayer.getMyStats().getGoals();
-				topPlayers.add( tempPlayer);
+				topgoals = Teams.get(i).getRoster().get(j).getMyStats().getGoals();
+				topPlayers.add( Teams.get(i).getRoster().get(j));
 			}
-			if(tempPlayer.getMyStats().getYellowCards() > topfouls)
+			if(Teams.get(i).getRoster().get(j).getMyStats().getYellowCards() > topfouls)
 			{
-				topfouls = tempPlayer.getMyStats().getYellowCards();
-				topPlayers.add( tempPlayer);
+				topfouls = Teams.get(i).getRoster().get(j).getMyStats().getYellowCards();
+				topPlayers.add( Teams.get(i).getRoster().get(j));
 			}
-			if(tempPlayer.getMyStats().getGamesPlayed()> topgamesPlayed)
+			if(Teams.get(i).getRoster().get(j).getMyStats().getGamesPlayed()> topgamesPlayed)
 			{
-				topgoals = tempPlayer.getMyStats().getGoals();
-				topPlayers.add( tempPlayer);
+				topgoals = Teams.get(i).getRoster().get(j).getMyStats().getGoals();
+				topPlayers.add( Teams.get(i).getRoster().get(j));
 			}
 		}
 	}
@@ -70,8 +68,6 @@ public List<SoccerTeam> getStandings(){
 		{
 			Standings.add(Teams.get(i));
 			j++;
-			int x =0;
-			x++;
 		}
 		else if(Teams.get(i).getWins()> Standings.get(j).getWins() )
 		{

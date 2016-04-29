@@ -62,24 +62,29 @@ public class DataTransfer {
 		return bar;
 	}
 	public void putSoccerTeam(SoccerTeam x){
-		ofy().save().entity(x).now();
-		
+		ofy().save().entity(x).now();	
 	}
+	public SoccerTeam getSoccerTeam(String teamName){
+		SoccerTeam team= ofy().load().type(SoccerTeam.class).id(teamName).now();
+		return team;
+	}
+	
 	public boolean isInDataBase(String email){
-		System.out.println(email);
+		System.out.println("i am inside the isInDataBase function");
+		return false;
 //		if(ofy().load().type(RegisteredUser.class).id(email).now()==null){
 //			System.out.println("it is not in the database");
 //			return false;
 //		}
 //		System.out.println("it is in the database");
 //		return true;
-		SoccerPlayer x= getSoccerPlayerData(email);
-		if(x==null){
-			System.out.println("the player is not in the database");
-			return false;
-		}
-		System.out.println("the player is in the database");
-		return true;
+//		SoccerPlayer x= getSoccerPlayerData(email);
+//		if(x==null){
+//			System.out.println("the player is not in the database");
+//			return false;
+//		}
+//		System.out.println("the player is in the database");
+//		return true;
 	}
 	public void putBasketballPlayer(BasketballPlayer x){
 		System.out.println("saving basketball player");

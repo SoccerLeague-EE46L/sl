@@ -15,29 +15,28 @@ public class SoccerTeam {
     }
 	@Id protected String teamName;
 	private static DataTransfer myDataBase = DataTransfer.getDataTransfer();
-	private String Coach;
+	private SoccerPlayer Coach;
 	private int NumOfPlayers;
-	private List<String> Roster= new ArrayList<String>();
+	private List<SoccerPlayer> Roster= new ArrayList<SoccerPlayer>();
 	private  int NumMidFielder=0;
 	private int NumDefender=0;
 	private int NumAttacker=0;
 	private int NumGoalie=0;
 	private SoccerTeamStats teamStats;
 	private SoccerTeam(){}
-	public SoccerTeam(String Coach, String teamName){
+	public SoccerTeam(SoccerPlayer  Coach, String teamName){
 		if(teamName.equals("not a team")){
 			teamName="abcd";
 		}
 		else{
 			this.teamName=teamName;
 			this.Coach = Coach;
-			SoccerPlayer  coach = myDataBase.getSoccerPlayerData(Coach);
 			System.out.println("inside soccerteam constructor");
-			if(coach.getPositionsPlayed()!=null)
+			if(this.Coach.getPositionsPlayed()!=null)
 			{
 				NumOfPlayers++;
 				System.out.println("is getting the positions a problem");
-				List<String> coachPosition = coach.getPositionsPlayed();
+				List<String> coachPosition = Coach.getPositionsPlayed();
 				System.out.println("gettimg positions is not a problem");
 				for(int i = 0; i<coachPosition.size();i++ )
 				{
@@ -65,10 +64,10 @@ public class SoccerTeam {
 	public String getTeamName() {
 		return teamName;
 	}
-	public String getCoach(){
+	public RegisteredUser getCoach(){
 		return Coach;
 	}
-	public List<String> getRoster(){
+	public List<SoccerPlayer> getRoster(){
 		return Roster;
 	}
 	public  int getNumOfPlayers(){
@@ -86,11 +85,10 @@ public class SoccerTeam {
 	public int getNumGoalie() {
 		return NumGoalie;
 	}
-	public void addPlayer(String player){
+	public void addPlayer(SoccerPlayer player){
 		Roster.add(player);
 		NumOfPlayers++;
-		SoccerPlayer tempPlayer = myDataBase.getSoccerPlayerData(player);
-		incRosterAvailability(tempPlayer);
+		incRosterAvailability(player);
 	}
 	private void incRosterAvailability(SoccerPlayer x){
 		List<String> playerPosition = x.getPositionsPlayed();
@@ -123,7 +121,7 @@ public class SoccerTeam {
 
 	public void removePlayer(String email) {
 		SoccerPlayer player=myDataBase.getSoccerPlayerData(email);
-		if(getCoach().equals(email)){
+		if(getCoach().getEmail().equals(email)){
 			this.removeCoach(email);
 		}
 		decRosterAvailability(player);
