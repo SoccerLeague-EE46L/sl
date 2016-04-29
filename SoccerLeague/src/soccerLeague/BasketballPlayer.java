@@ -2,10 +2,14 @@ package soccerLeague;
 
 import java.util.List;
 
+import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.annotation.Container;
 import com.googlecode.objectify.annotation.Subclass;
 @Subclass
 public class BasketballPlayer extends RegisteredUser{
+	static{
+		ObjectifyService.register(BasketballPlayer.class); 
+	}
 	//	private SoccerPosition position;
 		private Integer jerseyNumber;
 	//	@Container private SoccerTeam team;

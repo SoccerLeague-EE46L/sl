@@ -13,6 +13,9 @@ import com.googlecode.objectify.annotation.Id;
 
 @Entity
 public abstract class RegisteredUser {
+//	static{
+//        ObjectifyService.register(RegisteredUser.class); 
+//	}
 	private String firstName;
 	private String lastName;
 	@Id private String email;

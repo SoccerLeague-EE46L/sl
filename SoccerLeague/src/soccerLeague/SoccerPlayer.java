@@ -14,12 +14,12 @@ import com.googlecode.objectify.annotation.Serialize;
 import com.googlecode.objectify.annotation.Stringify;
 import com.googlecode.objectify.annotation.Subclass;
 
-@Subclass
-//even if you are a subclass you need to be registered//
+@Entity
 public class SoccerPlayer extends RegisteredUser{   
 	static {
         ObjectifyService.register(SoccerPlayer.class); 
     }
+	private static DataTransfer myData= DataTransfer.getDataTransfer();
 	private SoccerPosition position;
 	private Integer jerseyNumber;
 	private String team;
@@ -76,33 +76,31 @@ public class SoccerPlayer extends RegisteredUser{
 		myStats= new PersonalSoccerStats();
 	}
 	public void putRegisteredUserData(){
-		DataTransfer myData= DataTransfer.getDataTransfer();
 		myData.putSoccerPlayerData(this);
 	}
 	public void updateRegisteredUserName(String update){
-		DataTransfer myData= DataTransfer.getDataTransfer();
 		myData.updateSoccerPlayerName(this, update);
 	}
 	public SoccerPlayer getRegisteredUserData(String email){
-		DataTransfer myData= DataTransfer.getDataTransfer();
 		return myData.getSoccerPlayerData(email);
 	}
 	/////////////////////////////
-//	public void makeTeam(String name){
-//		if(this.getTeam()!=null){
-//			leaveTeam();
-//		}
-//		this.team=new SoccerTeam( this,name);
-//		this.setCoach(true);
-//		DataTransfer myData= DataTransfer.getDataTransfer();
-//		System.out.println("testing print statement: checking to see if it puts team on database");
-//		myData.putSoccerTeam(this.team);
-//		System.out.println("testing print statement: successfully puts team on database");	
-//	}
-//	public void leaveTeam(){
-//		if(this.getTeam()==null){return;}
-//		this.getTeam().removePlayer(this.getEmail());
-//	}
+	public void makeTeam(String name){
+		if(this.getTeam()!=null){
+			leaveTeam();
+		}
+		SoccerTeam newTeam=new SoccerTeam( this,name);
+		this.setCoach(true);
+		this.team=newTeam.getTeamName();
+		System.out.println("testing print statement: checking to see if it puts team on database");
+		myData.putSoccerTeam(newTeam);
+		System.out.println("testing print statement: successfully puts team on database");	
+	}
+	public void leaveTeam(){
+		if(this.getTeam()==null){return;}
+		SoccerTeam team=myData.getSoccerTeam(this.team);
+		team.removePlayer(this.getEmail());
+	}
 	//need a way to remove a teammate but only if you are the coach
 	public void removeTeamMate(){}
 	public void lookForTeam(){}
