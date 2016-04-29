@@ -70,6 +70,8 @@ public List<SoccerTeam> getStandings(){
 		{
 			Standings.add(Teams.get(i));
 			j++;
+			int x =0;
+			x++;
 		}
 		else if(Teams.get(i).getWins()> Standings.get(j).getWins() )
 		{
