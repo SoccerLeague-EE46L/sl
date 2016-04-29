@@ -33,7 +33,7 @@
 		<div>
 			<h2>News</h2>
 			<ul>
-				<li> season will resume on june 5, 2016 after the holidays</hi>
+				<li> season will resume on june 5, 2016 after the holidays</li>
 				<li> we will continue to play in cedar park until further notice</li>
 			</ul>
 		</div>

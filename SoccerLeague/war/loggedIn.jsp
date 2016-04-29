@@ -31,15 +31,14 @@
 						<button class="dropbtn">Profile</button>
 						<div class="dropdown-content">
 						<a href="profile.jsp">View Profile</a>
-						<a href="personalStats.jsp">View Personal Stats</a>
-						<a href="teamStats.jsp">View Team Stats</a>
+						<a href="personalStats.jsp">Personal Stats</a>
+						<a href="teamStats.jsp">Team Stats</a>
 						<a href="maketeam">Make Team</a>
 						<a href="index.jsp">Look For Team</a>
 						</div>
 						</div>
 						</li>
-						<li><a href="profile.jsp">Profile</a></li>
-					<li><a href="LogIn.html">Log Out</a></li>
+						<li><a href="LogIn.html">Log Out</a></li>
 
 
 					

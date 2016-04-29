@@ -14,7 +14,7 @@ import com.googlecode.objectify.annotation.Serialize;
 import com.googlecode.objectify.annotation.Stringify;
 import com.googlecode.objectify.annotation.Subclass;
 
-@Subclass
+@Entity
 public class SoccerPlayer extends RegisteredUser{   
 	static {
         ObjectifyService.register(SoccerPlayer.class); 

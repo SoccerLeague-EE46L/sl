@@ -71,13 +71,13 @@ public class DataTransfer {
 	
 	public boolean isInDataBase(String email){
 		System.out.println("i am inside the isInDataBase function");
-		return false;
-//		if(ofy().load().type(RegisteredUser.class).id(email).now()==null){
-//			System.out.println("it is not in the database");
-//			return false;
-//		}
-//		System.out.println("it is in the database");
-//		return true;
+//		return false;
+		if(ofy().load().type(SoccerPlayer.class).id(email).now()==null){
+			System.out.println("it is not in the database");
+			return false;
+		}
+		System.out.println("it is in the database");
+		return true;
 //		SoccerPlayer x= getSoccerPlayerData(email);
 //		if(x==null){
 //			System.out.println("the player is not in the database");
