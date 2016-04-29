@@ -5,4 +5,5 @@ public interface PersonalStats {
 	public void setGamesPlayed(Integer games);
 	
 	
+
 }
