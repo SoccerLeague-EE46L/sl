@@ -8,6 +8,7 @@
 	<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 	<%@ page import= "soccerLeague.DataTransfer" %>
 	<%@ page import= "soccerLeague.RegisteredUser" %>
+	<%@ page import="soccerLeague.SoccerPlayer"%>
 
 
 
@@ -18,7 +19,7 @@
 	      User user = userService.getCurrentUser();
 	      String email= user.getEmail();
 	      DataTransfer myDataBase= DataTransfer.getDataTransfer();
-	      RegisteredUser x=(RegisteredUser)myDataBase.getSoccerPlayerData(email);
+	      SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
 	      System.out.println("ok getting the player worked");
 	      %>
 	<ul>

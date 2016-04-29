@@ -65,13 +65,15 @@ public class DataTransfer {
 		ofy().save().entity(x).now();	
 	}
 	public SoccerTeam getSoccerTeam(String teamName){
-		SoccerTeam team= ofy().load().type(SoccerTeam.class).id(teamName).now();
-		return team;
+		return ofy().load().type(SoccerTeam.class).id(teamName).now();
+	
 	}
 	
 	public boolean isInDataBase(String email){
 		System.out.println("i am inside the isInDataBase function");
+		System.out.println(email);
 //		return false;
+		if(email.equals("notAnEmail")){return true;}
 		if(ofy().load().type(SoccerPlayer.class).id(email).now()==null){
 			System.out.println("it is not in the database");
 			return false;

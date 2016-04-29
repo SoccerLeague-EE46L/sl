@@ -89,9 +89,10 @@ public class SoccerPlayer extends RegisteredUser{
 		if(this.getTeam()!=null){
 			leaveTeam();
 		}
-		SoccerTeam newTeam=new SoccerTeam( this,name);
+		SoccerTeam newTeam=new SoccerTeam( this.getEmail(),name);
 		this.setCoach(true);
 		this.team=newTeam.getTeamName();
+		this.team = name;
 		System.out.println("testing print statement: checking to see if it puts team on database");
 		myData.putSoccerTeam(newTeam);
 		System.out.println("testing print statement: successfully puts team on database");	
@@ -100,6 +101,7 @@ public class SoccerPlayer extends RegisteredUser{
 		if(this.getTeam()==null){return;}
 		SoccerTeam team=myData.getSoccerTeam(this.team);
 		team.removePlayer(this.getEmail());
+		this.team = null;
 	}
 	//need a way to remove a teammate but only if you are the coach
 	public void removeTeamMate(){}

@@ -14,6 +14,13 @@ public class PersonalSoccerStats implements PersonalStats{
 	private Integer yellowCards;
 	private Integer cleanSheets;
 	public PersonalSoccerStats(){
+	 this.assists = 0;
+	 goals = 0;
+	 redCards = 0;
+	 yellowCards = 0;
+	 cleanSheets = 0;
+	 gamesPlayed = 0;
+	 
 	}
 	public Integer getGamesPlayed() {
 		return gamesPlayed;
