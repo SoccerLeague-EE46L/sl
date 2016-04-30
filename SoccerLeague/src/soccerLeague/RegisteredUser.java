@@ -13,9 +13,9 @@ import com.googlecode.objectify.annotation.Id;
 
 @Entity
 public abstract class RegisteredUser {
-//	static{
-//        ObjectifyService.register(RegisteredUser.class); 
-//	}
+	static{
+        ObjectifyService.register(RegisteredUser.class); 
+	}
 	private String firstName;
 	private String lastName;
 	@Id private String email;
@@ -84,5 +84,6 @@ public abstract class RegisteredUser {
 		DataTransfer myData= DataTransfer.getDataTransfer();
 		return myData.getRegisteredUserData(email);
 	}
+	public void makeTeam(String teamName){}
 
 }

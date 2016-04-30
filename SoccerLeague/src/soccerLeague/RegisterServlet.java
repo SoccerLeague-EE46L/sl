@@ -34,7 +34,7 @@ public class RegisterServlet extends HttpServlet{
 		}
 		String email = getEmail();
         ArrayList needsToBeREmoved= new ArrayList();
-		user.setBasicInfo(req.getParameter("first_name"),req.getParameter("last_name"),email,req.getParameter("address"),req.getParameter("phone_number"),needsToBeREmoved);
+		user.setBasicInfo(req.getParameter("first_name"),req.getParameter("last_name"),email,req.getParameter("phone_number"),req.getParameter("address"),needsToBeREmoved);
 		System.out.println(req.getParameter("first_name")+req.getParameter("last_name")+email+req.getParameter("address")+req.getParameter("phone_number")+needsToBeREmoved);
 		user.putRegisteredUserData();
         resp.sendRedirect("/loggedIn.jsp");

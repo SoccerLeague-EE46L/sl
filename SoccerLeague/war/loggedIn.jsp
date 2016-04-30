@@ -33,7 +33,7 @@
 						<a href="profile.jsp">View Profile</a>
 						<a href="personalStats.jsp">Personal Stats</a>
 						<a href="teamStats.jsp">Team Stats</a>
-						<a href="maketeam">Make Team</a>
+						<a href="teamForm.jsp">Make Team</a>
 						<a href="index.jsp">Look For Team</a>
 						</div>
 						</div>

@@ -74,7 +74,7 @@ public class DataTransfer {
 		System.out.println(email);
 //		return false;
 		if(email.equals("notAnEmail")){return true;}
-		if(ofy().load().type(SoccerPlayer.class).id(email).now()==null){
+		if(ofy().load().type(RegisteredUser.class).id(email).now()==null){
 			System.out.println("it is not in the database");
 			return false;
 		}

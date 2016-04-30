@@ -6,6 +6,10 @@
 <%@ page import="com.google.appengine.api.users.User" %>
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ page import="soccerLeague.RegisteredUser" %>
+<%@ page import= "soccerLeague.SoccerPlayer" %>
+<%@ page import= "com.googlecode.objectify.ObjectifyService" %> 
+
 
       
 
@@ -16,6 +20,12 @@
 	</head>
 
 	<body>
+	   <%
+	   
+	   ObjectifyService.register(RegisteredUser.class);
+	      ObjectifyService.register(SoccerPlayer.class); 
+	 
+	    %>
 		<header>
 			<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
 			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
