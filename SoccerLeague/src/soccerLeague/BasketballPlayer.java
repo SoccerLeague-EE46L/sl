@@ -43,7 +43,7 @@ public class BasketballPlayer extends RegisteredUser{
 	}
 
 	@Override
-	public void makeTeam(String teamName) {
+	public void makeTeam(String teamName,List<String> posNeeded) {
 		// TODO Auto-generated method stub
 		
 	}

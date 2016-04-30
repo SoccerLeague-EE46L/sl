@@ -3,6 +3,9 @@ package soccerLeague;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -23,16 +26,31 @@ public class MakeTeamServlet extends HttpServlet {
 	      String email= user.getEmail();  
 	      System.out.println(email);
 	      RegisteredUser x = ofy().load().type(SoccerPlayer.class).id(email).now();
+	      
+			String[]sportPos =x.getSportPositions();
+			ArrayList<String> sports=new ArrayList<String>();
+			for(int k=0;k<sportPos.length;k++){
+				System.out.println(sportPos[k]);
+				sports.add(sportPos[k]);
+			}
+			ArrayList<String> positions= new ArrayList<String>();
+			Map params=req.getParameterMap();
+			Iterator iter= params.values().iterator();
+			while(iter.hasNext()){
+				String[]y=(String[]) iter.next();
+				for(int j=0;j<y.length;j++){
+					if(sports.contains(y[j])){
+						System.out.println(y[j]);
+						positions.add(y[j]);
+					}
+				}
+			}
+	      
 	      String teamName=req.getParameter("teamName");
-	      String removeteam=req.getParameter("removeTeam");
-	      String beCoach=req.getParameter("beCoach");
-	      if(beCoach==null || removeteam==null){
-	    	  resp.sendRedirect("/teamForm.jsp");
-	      }
 	      System.out.println("about to make team");
-	      x.makeTeam(teamName);
+	      x.makeTeam(teamName,positions);
 	      System.out.println("made the team");
-	     
+	      resp.sendRedirect("/loggedIn.jsp");
 	   
 	}
 

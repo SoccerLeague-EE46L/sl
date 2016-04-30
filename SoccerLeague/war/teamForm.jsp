@@ -28,11 +28,14 @@
             <option value="soccerLeague.FootballPlayer">div2</option>
           </optgroup>
         </select>
-        
-          <label>Terms and Condition:</label>
-          <input type="checkbox" id="removeTeam" value="true" name="removeTeam"><label class="light" for="removedTeam">Agree to be removed from any other team</label><br>
-            <input type="checkbox" id="beCoach" value="true" name="beCoach"><label class="light" for="beCoach">Agree to be the coach for the team</label><br>
         </fieldset>
+          <fieldset>
+          <label>Looking For Players:</label><br>
+          <input type="checkbox" id="goalie" value="goalie" name="goalie"><label class="light" for="goalie">Goalie</label><br>
+          <input type="checkbox" id="defender" value="defender" name="defender"><label class="light" for="defender">Defender</label><br>
+          <input type="checkbox" id="midfielder" value="midfielder" name="midfielder"><label class="light" for="midfielder">Midfielder</label><br>
+          <input type="checkbox" id="attacker" value="attacker" name="attacker"><label class="light" for="attacker">Attacker</label>
+          </fieldset>
         <button type="submit">Register Team</button>
       </form>
       

@@ -25,10 +25,14 @@ public class SoccerTeam {
 	private int NumAttacker=0;
 	private int NumGoalie=0;
 	private SoccerTeamStats teamStats;
+	private List<String> posNeeded;
+	private boolean needsPlayer;
+
 	private SoccerTeam(){}
 	public SoccerTeam(SoccerPlayer  coach, String teamName){
 		this.teamName=teamName;
 		this.Coach = coach.getEmail();
+		this.needsPlayer=false;
 		System.out.println("team should have zero players");
 		if(coach.getPosition().getPositionsPlayed()!=null)
 		{
@@ -141,6 +145,18 @@ public class SoccerTeam {
 	}
 	public int getLosses(){
 		return teamStats.getLosses();
+	}
+	public List<String> getPosNeeded() {
+		return posNeeded;
+	}
+	public void setPosNeeded(List<String> posNeeded) {
+		this.posNeeded = posNeeded;
+	}
+	public boolean needsPlayers(){
+		return needsPlayer;
+	}
+	public void setNeedsPlayers(boolean flag){
+		this.needsPlayer=flag;
 	}
 }
 

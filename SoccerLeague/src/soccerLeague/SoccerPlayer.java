@@ -85,11 +85,15 @@ public class SoccerPlayer extends RegisteredUser{
 		return myData.getSoccerPlayerData(email);
 	}
 	/////////////////////////////
-	public void makeTeam(String name){
+	public void makeTeam(String name,List<String> posNeeded){
 		if(this.getTeam()!=null){
 			leaveTeam();
 		}
 		SoccerTeam newTeam=new SoccerTeam( this,name);
+		if(posNeeded!=null){
+			newTeam.setNeedsPlayers(true);
+			newTeam.setPosNeeded(posNeeded);
+		}
 		System.out.println("it created the team");
 		this.setCoach(true);
 		this.team=newTeam.getTeamName();

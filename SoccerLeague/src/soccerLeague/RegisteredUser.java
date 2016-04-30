@@ -84,7 +84,7 @@ public abstract class RegisteredUser {
 		DataTransfer myData= DataTransfer.getDataTransfer();
 		return myData.getRegisteredUserData(email);
 	}
-	public abstract void makeTeam(String teamName);
+	public abstract void makeTeam(String teamName,List<String> posNeeded);
 	public abstract String[] getSportPositions();
 
 }
