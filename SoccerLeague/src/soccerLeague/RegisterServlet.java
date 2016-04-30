@@ -35,6 +35,7 @@ public class RegisterServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		String email = getEmail();
+		//this part of the code checks the positions parameters to see which positions the player is willing to play
 		String[]sportPos =user.getSportPositions();
 		ArrayList<String> sports=new ArrayList<String>();
 		for(int k=0;k<sportPos.length;k++){

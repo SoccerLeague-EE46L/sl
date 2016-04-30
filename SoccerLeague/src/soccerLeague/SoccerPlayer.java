@@ -92,8 +92,8 @@ public class SoccerPlayer extends RegisteredUser{
 		SoccerTeam newTeam=new SoccerTeam( this,name);
 		System.out.println("it created the team");
 		this.setCoach(true);
-		this	.team=newTeam.getTeamName();
-		this.team = name;
+		this.team=newTeam.getTeamName();
+		this.putRegisteredUserData();
 		System.out.println("testing print statement: checking to see if it puts team on database");
 		myData.putSoccerTeam(newTeam);
 		System.out.println("testing print statement: successfully puts team on database");	

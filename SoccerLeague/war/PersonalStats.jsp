@@ -41,31 +41,38 @@
 		</tr>
 		<tr>
 		<td>Positions Played:</td>
-		<td><%out.print(x.getPositionsPlayed()); %></td>
+		<td><%out.print(x.getPosition().getPositionsPlayed()); %></td>
 		</tr>
 		<tr>
 		<td>Games Played:</td>
-		<td><%out.print(x.getMyStats().getGamesPlayed()); %></td>
+		<td><%if(x.getMyStats()==null){out.print(0);}
+		else{out.print(x.getMyStats().getGamesPlayed());}
+		 %></td>
 		</tr>
 		<tr>
 		<td>Goals:</td>
-		<td><%out.print(x.getMyStats().getGoals()); %></td>
+		<td><%if(x.getMyStats()==null){out.print(0);}
+		else{out.print(x.getMyStats().getGoals());}%></td>
 		</tr>
 		<tr>
 		<td>Assists:</td>
-		<td><%out.print(x.getMyStats().getAssists()); %></td>
+		<td><%if(x.getMyStats()==null){out.print(0);}
+		else{out.print(x.getMyStats().getAssists());} %></td>
 		</tr>
 		<tr>
 		<td>Clean Sheets:</td>
-		<td><%out.print(x.getMyStats().getCleanSheets()); %></td>
+		<td><%if(x.getMyStats()==null){out.print(0);}
+		else{out.print(x.getMyStats().getCleanSheets());} %></td>
 		</tr>
 		<tr>
 		<td>Red Cards:</td>
-		<td><%out.print(x.getMyStats().getRedCards()); %></td>
+		<td><%if(x.getMyStats()==null){out.print(0);}
+		else{out.print(x.getMyStats().getRedCards());}%></td>
 		</tr>
 		<tr>
 		<td>Yellow Cards:</td>
-		<td><%out.print(x.getMyStats().getYellowCards()); %></td>
+		<td><%if(x.getMyStats()==null){out.print(0);}
+		else{out.print(x.getMyStats().getYellowCards());}%></td>
 		</tr>
 		</table>
 	      </body>

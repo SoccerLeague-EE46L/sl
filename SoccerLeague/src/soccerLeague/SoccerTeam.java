@@ -29,11 +29,11 @@ public class SoccerTeam {
 	public SoccerTeam(SoccerPlayer  coach, String teamName){
 		this.teamName=teamName;
 		this.Coach = coach.getEmail();
-		System.out.println("inside soccerteam constructor");
+		System.out.println("team should have zero players");
 		if(coach.getPosition().getPositionsPlayed()!=null)
 		{
 			NumOfPlayers++;
-			System.out.println("is getting the positions a problem");
+			System.out.println(NumOfPlayers);
 			List<String> coachPosition = coach.getPosition().getPositionsPlayed();
 			System.out.println("gettimg positions is not a problem");
 			for(int i = 0; i<coachPosition.size();i++ )

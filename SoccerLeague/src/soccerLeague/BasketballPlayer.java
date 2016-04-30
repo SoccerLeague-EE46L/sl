@@ -42,4 +42,10 @@ public class BasketballPlayer extends RegisteredUser{
 		return null;
 	}
 
+	@Override
+	public void makeTeam(String teamName) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
