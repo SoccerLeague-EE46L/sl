@@ -102,7 +102,9 @@ public class SoccerPlayer extends RegisteredUser{
 		if(this.getTeam()==null){return;}
 		SoccerTeam team=myData.getSoccerTeam(this.team);
 		team.removePlayer(this.getEmail());
+		myData.putSoccerTeam(team);
 		this.team = null;
+		this.putRegisteredUserData();
 	}
 	public String[] getSportPositions() {
 		return SoccerPlayer.avaiablePositions;

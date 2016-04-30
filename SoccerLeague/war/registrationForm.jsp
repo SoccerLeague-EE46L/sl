@@ -47,7 +47,7 @@
           <label>Positions:</label>
           <input type="checkbox" id="goalie" value="goalie" name="goalie"><label class="light" for="goalie">Goalie</label><br>
             <input type="checkbox" id="defender" value="defender" name="defender"><label class="light" for="defender">Defender</label><br>
-          <input type="checkbox" id="midfield" value="midfield" name="midfield"><label class="light" for="midfield">Midfielder</label>
+          <input type="checkbox" id="midfielder" value="midfielder" name="midfielder"><label class="light" for="midfielder">Midfielder</label>
           <input type="checkbox" id="attracker" value="attracker" name="attracker"><label class="light" for="attracker">Attacker</label>
         
         </fieldset>

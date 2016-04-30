@@ -125,12 +125,12 @@ public class SoccerTeam {
 		decRosterAvailability(email);
 		this.NumOfPlayers--;
 		Roster.remove(email);
-	
 	}
 	public void removeCoach(String email) {
 		SoccerPlayer player=myDataBase.getSoccerPlayerData(email);
 		player.setCoach(false);
 		this.Coach=null;
+		player.putRegisteredUserData();
 		
 	}
 	public void addWin(){
