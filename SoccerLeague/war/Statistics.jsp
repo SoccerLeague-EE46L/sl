@@ -28,6 +28,7 @@
 // 		response.sendRedirect("PersonalStats.jsp");
 // 	}
 %>
+<button type="submit">Sign Up</button>
 <p><%myDataBase.getSoccerPlayerData(email).getMyStats().getAssists(); %><p>
 
 </body>
