@@ -8,6 +8,7 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 <%@ page import="soccerLeague.RegisteredUser" %>
 <%@ page import= "soccerLeague.SoccerPlayer" %>
+<%@ page import= "soccerLeague.SoccerTeam" %>
 <%@ page import= "com.googlecode.objectify.ObjectifyService" %> 
 
 
@@ -23,7 +24,8 @@
 	   <%
 	   
 	   ObjectifyService.register(RegisteredUser.class);
-	      ObjectifyService.register(SoccerPlayer.class); 
+	      ObjectifyService.register(SoccerPlayer.class);
+	      ObjectifyService.register(SoccerTeam.class); 
 	 
 	    %>
 		<header>

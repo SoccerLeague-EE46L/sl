@@ -34,7 +34,7 @@
 						<a href="PersonalStats.jsp">Personal Stats</a>
 						<a href="teamStats.jsp">Team Stats</a>
 						<a href="teamForm.jsp">Make Team</a>
-						<a href="index.jsp">Look For Team</a>
+						<a href="teamsNeedingPlayers.jsp">Look For Team</a>
 						</div>
 						</div>
 						</li>

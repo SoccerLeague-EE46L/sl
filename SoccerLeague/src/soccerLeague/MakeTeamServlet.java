@@ -34,6 +34,7 @@ public class MakeTeamServlet extends HttpServlet {
 				sports.add(sportPos[k]);
 			}
 			ArrayList<String> positions= new ArrayList<String>();
+			
 			Map params=req.getParameterMap();
 			Iterator iter= params.values().iterator();
 			while(iter.hasNext()){
