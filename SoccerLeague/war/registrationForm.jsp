@@ -44,10 +44,11 @@
           </optgroup>
         </select>
         
-          <label>Interests:</label>
-          <input type="checkbox" id="development" value="interest_development" name="user_interest"><label class="light" for="development">Development</label><br>
-            <input type="checkbox" id="design" value="interest_design" name="user_interest"><label class="light" for="design">Design</label><br>
-          <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Business</label>
+          <label>Positions:</label>
+          <input type="checkbox" id="goalie" value="goalie" name="goalie"><label class="light" for="goalie">Goalie</label><br>
+            <input type="checkbox" id="defender" value="defender" name="defender"><label class="light" for="defender">Defender</label><br>
+          <input type="checkbox" id="midfield" value="midfield" name="midfield"><label class="light" for="midfield">Midfielder</label>
+          <input type="checkbox" id="attracker" value="attracker" name="attracker"><label class="light" for="attracker">Attacker</label>
         
         </fieldset>
         <button type="submit">Sign Up</button>

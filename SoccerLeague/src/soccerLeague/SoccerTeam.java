@@ -26,36 +26,30 @@ public class SoccerTeam {
 	private int NumGoalie=0;
 	private SoccerTeamStats teamStats;
 	private SoccerTeam(){}
-	public SoccerTeam(String  Coach, String teamName){
-		if(teamName.equals("not a team")){
-			teamName="abcd";
-		}
-		else{
-			this.teamName=teamName;
-			SoccerPlayer coach = new SoccerPlayer();
-			coach.getRegisteredUserData(Coach);
-			this.Coach = Coach;
-			System.out.println("inside soccerteam constructor");
-			if(coach.getPositionsPlayed()!=null)
+	public SoccerTeam(SoccerPlayer  coach, String teamName){
+		this.teamName=teamName;
+		this.Coach = coach.getEmail();
+		System.out.println("inside soccerteam constructor");
+		if(coach.getPosition().getPositionsPlayed()!=null)
+		{
+			NumOfPlayers++;
+			System.out.println("is getting the positions a problem");
+			List<String> coachPosition = coach.getPosition().getPositionsPlayed();
+			System.out.println("gettimg positions is not a problem");
+			for(int i = 0; i<coachPosition.size();i++ )
 			{
-				NumOfPlayers++;
-				System.out.println("is getting the positions a problem");
-				List<String> coachPosition = coach.getPositionsPlayed();
-				System.out.println("gettimg positions is not a problem");
-				for(int i = 0; i<coachPosition.size();i++ )
-				{
-					if(coachPosition.get(i).equals("MidFielder"))
-						NumMidFielder++;
-					if(coachPosition.get(i).equals("Attacker"))
-						NumAttacker++;
-					if(coachPosition.get(i).equals("Defender"))
-						NumDefender++;
-					if(coachPosition.get(i).equals("Goalie"))
-						NumGoalie++;
-				}
-				Roster.add(Coach);
+				if(coachPosition.get(i).equals("MidFielder"))
+					NumMidFielder++;
+				if(coachPosition.get(i).equals("Attacker"))
+					NumAttacker++;
+				if(coachPosition.get(i).equals("Defender"))
+					NumDefender++;
+				if(coachPosition.get(i).equals("Goalie"))
+					NumGoalie++;
 			}
+			Roster.add(Coach);
 		}
+
 		System.out.println("made it to the end ");
 	}
 	//should we have this??? using teamname as ID so maybe dont want to change name
@@ -95,7 +89,7 @@ public class SoccerTeam {
 		incRosterAvailability(player);
 	}
 	private void incRosterAvailability(String x){
-		List<String> playerPosition = myDataBase.getSoccerPlayerData(x).getPositionsPlayed();
+		List<String> playerPosition = myDataBase.getSoccerPlayerData(x).getPosition().getPositionsPlayed();
 		for(int i = 0; i<playerPosition.size();i++ )
 		{
 			if(playerPosition.get(i).equals("MidFielder"))
@@ -109,7 +103,7 @@ public class SoccerTeam {
 		}
 	}
 	private void decRosterAvailability(String x){
-		List<String> playerPosition = myDataBase.getSoccerPlayerData(x).getPositionsPlayed();
+		List<String> playerPosition = myDataBase.getSoccerPlayerData(x).getPosition().getPositionsPlayed();
 		for(int i = 0; i<playerPosition.size();i++ )
 		{
 			if(playerPosition.get(i).equals("MidFielder"))

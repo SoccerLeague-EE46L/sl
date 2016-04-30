@@ -19,6 +19,7 @@ public class SoccerPlayer extends RegisteredUser{
 	static {
         ObjectifyService.register(SoccerPlayer.class); 
     }
+	public static String[] avaiablePositions= {"goalie", "defender", "midfielder","attacker"};
 	private static DataTransfer myData= DataTransfer.getDataTransfer();
 	private SoccerPosition position;
 	private Integer jerseyNumber;
@@ -27,19 +28,12 @@ public class SoccerPlayer extends RegisteredUser{
 	private boolean isCoach;
 	public SoccerPlayer(){
 		setCoach(false);
-		team="not a team";
 	}
 	public boolean isCoach() {
 		return isCoach;
 	}
 	public void setCoach(boolean isCoach) {
 		this.isCoach = isCoach;
-	}
-	public List<String> getPositionsPlayed() {
-		return position.getPositionsPlayed();
-	}
-	public void setPosition(SoccerPosition position) {
-		this.position = position;
 	}
 	public Integer getJerseyNumber() {
 		return jerseyNumber;
@@ -53,12 +47,25 @@ public class SoccerPlayer extends RegisteredUser{
 	public void setTeam(String team) {
 		this.team = team;
 	}
+	public void setPosition(SoccerPosition position) {
+		this.position = position;
+	}
+	public void setPosition(List<String> pos) {
+		position= new SoccerPosition(pos);
+		System.out.println("it created a position");
+	}
+	public SoccerPosition getPosition(){
+		return this.position;
+	}
 	public PersonalSoccerStats getMyStats(){
 		return myStats;
 	}
 	//may not need this one//
 	public void setMyStats(PersonalSoccerStats myStats) {
 		this.myStats = myStats;
+	}
+	public void setStats(){
+		myStats= new PersonalSoccerStats();
 	}
 	public void updateStats(PersonalSoccerStats tempStats){
 		this.myStats.setGoals(tempStats.getGoals());
@@ -67,13 +74,6 @@ public class SoccerPlayer extends RegisteredUser{
 		this.myStats.setYellowCards(tempStats.getYellowCards());
 		this.myStats.setCleanSheets(tempStats.getCleanSheets());
 		this.myStats.setGamesPlayed(tempStats.getGamesPlayed());
-	}
-	public void setPosition(List<String> pos) {
-		position= new SoccerPosition(pos);
-		System.out.println("it created a position");
-	}
-	public void setStats(){
-		myStats= new PersonalSoccerStats();
 	}
 	public void putRegisteredUserData(){
 		myData.putSoccerPlayerData(this);
@@ -89,9 +89,10 @@ public class SoccerPlayer extends RegisteredUser{
 		if(this.getTeam()!=null){
 			leaveTeam();
 		}
-		SoccerTeam newTeam=new SoccerTeam( this.getEmail(),name);
+		SoccerTeam newTeam=new SoccerTeam( this,name);
+		System.out.println("it created the team");
 		this.setCoach(true);
-		this.team=newTeam.getTeamName();
+		this	.team=newTeam.getTeamName();
 		this.team = name;
 		System.out.println("testing print statement: checking to see if it puts team on database");
 		myData.putSoccerTeam(newTeam);
@@ -103,9 +104,15 @@ public class SoccerPlayer extends RegisteredUser{
 		team.removePlayer(this.getEmail());
 		this.team = null;
 	}
+	public String[] getSportPositions() {
+		return SoccerPlayer.avaiablePositions;
+	}
 	//need a way to remove a teammate but only if you are the coach
 	public void removeTeamMate(){}
 	public void lookForTeam(){}
+
+	
+	
 
 
 	

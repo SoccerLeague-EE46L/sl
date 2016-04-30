@@ -23,10 +23,7 @@
 	      System.out.println("ok getting the player worked");
 	      %>
 	<ul>
-		<li><% 
-		x.getFirstName();
-		%>
-		</li>
+		<li><h1><% out.println(x.getFirstName());%></h1> </li>
 	</ul>
 	      </body>
 	 </html>

@@ -21,10 +21,17 @@ public class MakeTeamServlet extends HttpServlet {
 	      UserService userService = UserServiceFactory.getUserService();
 	      User user = userService.getCurrentUser();
 	      String email= user.getEmail();  
+	      System.out.println(email);
 	      RegisteredUser x = ofy().load().type(SoccerPlayer.class).id(email).now();
-	      String teamname=req.getParameter("teamName");
+	      String teamName=req.getParameter("teamName");
 	      String removeteam=req.getParameter("removeTeam");
-	      System.out.println(req.getParameter("beCoach"));
+	      String beCoach=req.getParameter("beCoach");
+	      if(beCoach==null || removeteam==null){
+	    	  resp.sendRedirect("/teamForm.jsp");
+	      }
+	      System.out.println("about to make team");
+	      x.makeTeam(teamName);
+	      System.out.println("made the team");
 	     
 	   
 	}

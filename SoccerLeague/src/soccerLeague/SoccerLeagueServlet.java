@@ -31,7 +31,7 @@ public class SoccerLeagueServlet extends HttpServlet {
 		}
 		else{
 		resp.setContentType("text/plain");
-        resp.getWriter().println("Hello, " + foo.getFirstName()+ "here is all your info"+ foo.getLastName()+ foo.getPositionsPlayed().get(0)+ foo.getPositionsPlayed().get(1));
+    //    resp.getWriter().println("Hello, " + foo.getFirstName()+ "here is all your info"+ foo.getLastName()+ foo.getPositionsPlayed().get(0)+ foo.getPositionsPlayed().get(1));
 		}
 		System.out.println("about to make the team");
 	//	SoccerTeam x= new SoccerTeam(foo, "ut longhorns");

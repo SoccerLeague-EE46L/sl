@@ -23,19 +23,19 @@ public class PlayerTest {
 		
 	}
 
-	@Test
-	public void testGetPositionsPlayed()
-	{
-		ArrayList<String> positions = new ArrayList<String>();
-		positions.add("Midfield");
-		positions.add("Defender");
-		positions.add("Forward");
-		
-		SoccerPosition pos = new SoccerPosition(positions);
-		SoccerPlayer testPlayer = new SoccerPlayer();
-		testPlayer.setPosition(pos);
-		assertEquals(positions,testPlayer.getPositionsPlayed());
-	}
+//	@Test
+//	public void testGetPositionsPlayed()
+//	{
+//		ArrayList<String> positions = new ArrayList<String>();
+//		positions.add("Midfield");
+//		positions.add("Defender");
+//		positions.add("Forward");
+//		
+//		SoccerPosition pos = new SoccerPosition(positions);
+//		SoccerPlayer testPlayer = new SoccerPlayer();
+//		testPlayer.setPosition(pos);
+//		assertEquals(positions,testPlayer.getPositionsPlayed());
+//	}
 
 
 	@Test

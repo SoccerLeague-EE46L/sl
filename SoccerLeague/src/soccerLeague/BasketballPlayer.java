@@ -36,4 +36,10 @@ public class BasketballPlayer extends RegisteredUser{
 		myData.putBasketballPlayer(this);
 	}
 
+	@Override
+	public String[] getSportPositions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

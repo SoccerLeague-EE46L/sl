@@ -67,7 +67,7 @@ public abstract class RegisteredUser {
 		this.setPhoneNumber(phoneNumber);
 		this.setAddress(addr);	
 		this.setPosition(pos);
-		this.setStats();
+		//this.setStats();
 	}
 	public abstract void setPosition(List<String> pos);
 	public abstract void setStats();
@@ -85,5 +85,6 @@ public abstract class RegisteredUser {
 		return myData.getRegisteredUserData(email);
 	}
 	public void makeTeam(String teamName){}
+	public abstract String[] getSportPositions();
 
 }
