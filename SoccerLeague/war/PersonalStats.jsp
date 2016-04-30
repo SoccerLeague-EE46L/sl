@@ -1,47 +1,72 @@
- <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-  <%@ page import="java.util.List" %>
-  <%@ page import="com.google.appengine.api.users.User" %>
-  <%@ page import="com.google.appengine.api.users.UserService" %>
-  <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
-  <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-  <%@ page import= "soccerLeague.DataTransfer" %>
-<%@ page import="com.googlecode.objectify.Key" %>
-<%@ page import="com.googlecode.objectify.ObjectifyService" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	
-	 <form action="/stats" method="get">
-      
-        <h1>Here Are Your Personal Statistics</h1>
-        
-        
-        <fieldset>
-          <legend><span class="number">1</span>Your basic info</legend>
-          <label for="name">First Name:</label>
-          <%
-          SoccerPlayer Person  = ObjectifyService.ofy();
-      	
-          %>
-          
-          <label for="name">Last Name:</label>
-          <input type="text" id="lastName" name="last_name">
-          
-          
-          <label>Age:</label>
-          <input type="radio" id="under_13" value="under_13" name="user_age"><label for="under_13" class="light">Under 13</label><br>
-          <input type="radio" id="over_13" value="over_13" name="user_age"><label for="over_13" class="light">13 or older</label>
-        </fieldset>
-        
-	
-        
-        <button type="submit">Sign Up</button>
-      </form>
-</body>
-</html>
+
+	<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+	<%@ page import="com.google.appengine.api.users.User" %>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+	<%@ page import="com.google.appengine.api.users.User" %>
+	<%@ page import="com.google.appengine.api.users.UserService" %>
+	<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+	<%@ page import= "soccerLeague.DataTransfer" %>
+	<%@ page import= "soccerLeague.RegisteredUser" %>
+	<%@ page import="soccerLeague.SoccerPlayer"%>
+
+
+
+	 <html>
+	 
+	 
+	 	<body>
+	  <%
+	      UserService userService = UserServiceFactory.getUserService();
+	      User user = userService.getCurrentUser();
+	      String email= user.getEmail();
+	      DataTransfer myDataBase= DataTransfer.getDataTransfer();
+	      SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
+	     // System.out.println("ok getting the player worked");
+	     
+	    
+	     
+	      %>
+	      
+	  <p><b>Personal Stats</b>.</p>
+	<!-- table format -->  
+		<table border="1">
+		<tr>
+		<td>My Team:</td>
+		<td><%out.print(x.getTeam()); %></td>
+		</tr>
+		<tr>
+		<td>Jersey:</td>
+		<td><%out.print(x.getJerseyNumber()); %></td>
+		</tr>
+		<tr>
+		<td>Positions Played:</td>
+		<td><%out.print(x.getPositionsPlayed()); %></td>
+		</tr>
+		<tr>
+		<td>Games Played:</td>
+		<td><%out.print(x.getMyStats().getGamesPlayed()); %></td>
+		</tr>
+		<tr>
+		<td>Goals:</td>
+		<td><%out.print(x.getMyStats().getGoals()); %></td>
+		</tr>
+		<tr>
+		<td>Assists:</td>
+		<td><%out.print(x.getMyStats().getAssists()); %></td>
+		</tr>
+		<tr>
+		<td>Clean Sheets:</td>
+		<td><%out.print(x.getMyStats().getCleanSheets()); %></td>
+		</tr>
+		<tr>
+		<td>Red Cards:</td>
+		<td><%out.print(x.getMyStats().getRedCards()); %></td>
+		</tr>
+		<tr>
+		<td>Yellow Cards:</td>
+		<td><%out.print(x.getMyStats().getYellowCards()); %></td>
+		</tr>
+		</table>
+	      </body>
+	 </html>
