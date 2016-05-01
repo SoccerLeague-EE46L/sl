@@ -23,7 +23,7 @@
 			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 				<nav><ul>
 					<li><a href="index.html">home</a></li>
-						<li><a href="statistics.html">statistics</a></li>
+						<li><a href="Statistics.jsp">statistics</a></li>
 						<li><a href="calendar.html">calendar</a></li>
 						<li><a href="contact.html">contact us</a></li>
 						<li>
