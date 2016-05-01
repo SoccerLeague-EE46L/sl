@@ -14,8 +14,38 @@
 
 	 <html>
 	 
+	<head> 
+		<title>Austin Regional Soccer Association</title>
+		<link type="text/css" rel="stylesheet" href="/stylesheet/flavor.css"/>		
+	</head>
+
+	<body>
+		<header>
+			<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
+			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 	 
-	 	<body>
+	 <nav><ul>
+					<li><a href="index.html">home</a></li>
+						<li><a href="statistics.html">statistics</a></li>
+						<li><a href="calendar.html">calendar</a></li>
+						<li><a href="contact.html">contact us</a></li>
+						<li>
+						<div class="dropdown">
+						<button class="dropbtn">Profile</button>
+						<div class="dropdown-content">
+						<a href="profile.jsp">View Profile</a>
+						<a href="PersonalStats.jsp">Personal Stats</a>
+						<a href="teamStats.jsp">Team Stats</a>
+						<a href="teamForm.jsp">Make Team</a>
+						<a href="index.jsp">Look For Team</a>
+						</div>
+						</div>
+						</li>
+						<li><a href="LogIn.html">Log Out</a></li>
+
+
+					
+				</ul></nav>
 	  <%
 	      UserService userService = UserServiceFactory.getUserService();
 	      User user = userService.getCurrentUser();
