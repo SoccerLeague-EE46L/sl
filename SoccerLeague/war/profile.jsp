@@ -100,7 +100,7 @@
 		
 		<tr>
 		<td>Position</td>
-		<td><% out.print(x.getPosition());%>
+		<td><% out.print(x.getPosition().getPositionsPlayed());%>
 		</tr>
 		<tr>
 		
