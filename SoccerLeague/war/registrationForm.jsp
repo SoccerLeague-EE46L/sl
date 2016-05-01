@@ -1,4 +1,5 @@
         <html>
+        
         <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,6 +7,23 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link href='http://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/main.css">
+        <link type="text/css" rel="stylesheet" href="/stylesheet/flavor.css"/>
+        
+        
+        <header>
+			<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
+			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
+				<nav><ul>
+					<li><a href="index.html">home</a></li>
+					<li><a href="Statistics.jsp">Statistics</a></li>
+					<li><a href="calendar.html">calendar</a></li>
+					<li><a href="registration.jsp">Register</a></li>
+					<li><a href="contact.html">contact us</a></li>
+					<li><a href="LogIn.html">Log In</a></li>
+					<li><a href="soccerleague">SoccerLeague</a></li>
+					
+				</ul></nav>
+		</header>
         </head>
         <body>
 
