@@ -1,5 +1,6 @@
 package soccerLeague;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import com.googlecode.objectify.ObjectifyService;
@@ -157,6 +158,50 @@ public class SoccerTeam {
 	}
 	public void setNeedsPlayers(boolean flag){
 		this.needsPlayer=flag;
+	}
+	
+	public String getHighestGoalScorer(){
+		
+		String curHighestEmail = Roster.get(0);
+		DataTransfer myDataBase= DataTransfer.getDataTransfer();
+	    SoccerPlayer curHighestPlayer=myDataBase.getSoccerPlayerData(curHighestEmail);
+		
+		for(int i=1; i<Roster.size(); i++){
+			String nextUser = Roster.get(i);
+			SoccerPlayer nextPlayer = myDataBase.getSoccerPlayerData(nextUser);
+			
+			if(nextPlayer.getMyStats().getGoals() > curHighestPlayer.getMyStats().getGoals()){
+				curHighestEmail = nextUser;
+				curHighestPlayer=nextPlayer;
+			}
+			
+		}
+		
+		return curHighestEmail;
+		
+	}
+	
+public String getHighestAssistScorer(){
+		
+		String curHighestEmail = Roster.get(0);
+		DataTransfer myDataBase= DataTransfer.getDataTransfer();
+	    SoccerPlayer curHighestPlayer=myDataBase.getSoccerPlayerData(curHighestEmail);
+		
+		for(int i=1; i<Roster.size(); i++){
+			String nextUser = Roster.get(i);
+			SoccerPlayer nextPlayer = myDataBase.getSoccerPlayerData(nextUser);
+			
+			if(nextPlayer.getMyStats().getAssists() > curHighestPlayer.getMyStats().getAssists()){
+				curHighestEmail = nextUser;
+				curHighestPlayer=nextPlayer;
+			}
+			
+		}
+		
+		
+		return curHighestEmail;
+		
+		
 	}
 }
 
