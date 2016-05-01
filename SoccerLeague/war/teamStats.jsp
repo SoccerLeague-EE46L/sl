@@ -44,6 +44,10 @@
 						<li><a href="LogIn.html">Log Out</a></li>
 					
 				</ul></nav>
+				
+				</header>
+				
+			
 	
 	 	<body>
 	  <%
