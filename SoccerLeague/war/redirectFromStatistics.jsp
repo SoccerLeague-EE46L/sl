@@ -43,7 +43,7 @@
 			} catch(Exception e){ %> 
 				
 				<nav><ul>
-					<li><a href="index.html">home</a></li>
+					<li><a href="index.jsp">home</a></li>
 					<li><a href="Statistics.jsp">Statistics</a></li>
 					<li><a href="calendar.html">calendar</a></li>
 					<li><a href="registration.jsp">Register</a></li>
