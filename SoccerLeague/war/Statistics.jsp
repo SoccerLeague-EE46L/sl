@@ -9,7 +9,7 @@
   <%@ page import= "soccerLeague.SoccerLeague" %>
   <%@ page import= "soccerLeague.SoccerTeam" %>
   <%@ page import= "soccerLeague.SoccerPlayer" %>
- 
+   
  
   
  
@@ -23,6 +23,7 @@
 <header>
 		<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
 		<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
+</header>
 <%
 	UserService userService;
 	DataTransfer myDataBase= DataTransfer.getDataTransfer();
@@ -46,6 +47,7 @@
 // 	}
 
 %>
+
   <p><b>Statistics</b></p>
   <table>
     <thead>
