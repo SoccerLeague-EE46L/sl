@@ -46,6 +46,8 @@
 
 					
 				</ul></nav>
+				
+				</header>
 	  <%
 	      UserService userService = UserServiceFactory.getUserService();
 	      User user = userService.getCurrentUser();
