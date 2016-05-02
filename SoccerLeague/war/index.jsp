@@ -34,7 +34,7 @@
 				<nav><ul>
 					<li><a href="index.html">home</a></li>
 					<li><a href="Statistics.jsp">Statistics</a></li>
-					<li><a href="calendar.html">calendar</a></li>
+					<li><a href="calendar.jsp">calendar</a></li>
 					<li><a href="registration.jsp">Register</a></li>
 					<li><a href="contact.html">contact us</a></li>
 					<li><a href="LogIn.html">Log In</a></li>
