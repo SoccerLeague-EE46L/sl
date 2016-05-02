@@ -24,7 +24,7 @@
 				<nav><ul>
 					<li><a href="index.html">home</a></li>
 						<li><a href="Statistics.jsp">statistics</a></li>
-						<li><a href="calendar.html">calendar</a></li>
+						<li><a href="calendar.jsp">calendar</a></li>
 						<li><a href="contact.html">contact us</a></li>
 						<li>
 						<div class="dropdown">
