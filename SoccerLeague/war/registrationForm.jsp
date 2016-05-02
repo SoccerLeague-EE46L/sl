@@ -14,7 +14,7 @@
 			<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
 			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 				<nav><ul>
-					<li><a href="index.html">home</a></li>
+					<li><a href="index.jsp">home</a></li>
 					<li><a href="Statistics.jsp">Statistics</a></li>
 					<li><a href="calendar.html">calendar</a></li>
 					<li><a href="registration.jsp">Register</a></li>
