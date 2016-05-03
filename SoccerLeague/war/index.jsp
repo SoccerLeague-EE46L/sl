@@ -12,6 +12,7 @@
 <%@ page import= "com.googlecode.objectify.ObjectifyService" %> 
 
 
+
       
 
 <html>
@@ -40,9 +41,20 @@
 					<li><a href="LogIn.html">Log In</a></li>
 					<li><a href="soccerleague">SoccerLeague</a></li>
 					
+						<div class="dropdown">
+						<button class="dropbtn">Admin</button>
+						<div class="dropdown-content">
+						<a href="AdminTeam.jsp">Team Panel</a>
+						<a href="AdminPlayer.jsp">Player Panel</a>
+						<a href = "AdminSchedule.jsp">Schedule Event</a>
+		
+						</div>
+						</div>
+					
 				</ul></nav>
 		</header>
 		<div>
+	
 			<h2>News</h2>
 			<ul>
 				<li> season will resume on june 5, 2016 after the holidays</li>
