@@ -17,7 +17,14 @@
 	 
 	 
 	 	<body>
+	 	<form action="/lookforteam" method="get"> 
+        <h1>Looking For Team</h1>
+          <label><h2>Want to be added to our database of available players?<br> This makes it easier for coaches to find players</h2></label>
+        <button type="submit">Add Me</button>
+    	</form>
+
 	  <%
+
 	      UserService userService = UserServiceFactory.getUserService();
 	      User user = userService.getCurrentUser();
 	      String email= user.getEmail();

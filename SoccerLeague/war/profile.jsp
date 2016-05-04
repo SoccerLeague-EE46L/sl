@@ -25,7 +25,7 @@
 			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 	 
 	 <nav><ul>
-					<li><a href="index.html">home</a></li>
+					<li><a href="index.jsp">home</a></li>
 						<li><a href="statistics.html">statistics</a></li>
 						<li><a href="calendar.html">calendar</a></li>
 						<li><a href="contact.html">contact us</a></li>
@@ -37,7 +37,7 @@
 						<a href="PersonalStats.jsp">Personal Stats</a>
 						<a href="teamStats.jsp">Team Stats</a>
 						<a href="teamForm.jsp">Make Team</a>
-						<a href="index.jsp">Look For Team</a>
+						<a href="teamsNeedingPlayers.jsp">Look For Team</a>
 						</div>
 						</div>
 						</li>

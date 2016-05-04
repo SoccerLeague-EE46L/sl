@@ -35,9 +35,9 @@ public class AdminTeamUpdateServlet extends HttpServlet{
 		 DataTransfer myDataBase= DataTransfer.getDataTransfer();
 		 
 		SoccerTeam x = myDataBase.getSoccerTeam(teamName);
-		if(x.getTeamStats()==null){
-			x.setTeamStats(new SoccerTeamStats());
-		}
+//		if(x.getTeamStats()==null){
+//			x.setTeamStats(new SoccerTeamStats());
+//		}
 		
 		x.addWin();
 		

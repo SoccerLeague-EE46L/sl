@@ -20,7 +20,7 @@
 					<li><a href="registration.jsp">Register</a></li>
 					<li><a href="contact.html">contact us</a></li>
 					<li><a href="LogIn.html">Log In</a></li>
-					<li><a href="soccerleague">SoccerLeague</a></li>
+					
 					
 				</ul></nav>
 		</header>

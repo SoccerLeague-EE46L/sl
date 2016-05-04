@@ -34,10 +34,10 @@ public class AdminPlayerUpdateServlet extends HttpServlet{
 		
 		SoccerTeam team = myDataBase.getSoccerTeam(teamName);
 		
-		if(team.getTeamStats()==null){
-			team.setTeamStats(new SoccerTeamStats());
-		}
-		
+//		if(team.getTeamStats()==null){
+//			team.setTeamStats(new SoccerTeamStats());
+//		}
+//		
 		SoccerPlayer player = null;
 		
 		for(int i=0; i<team.getRoster().size(); i++){

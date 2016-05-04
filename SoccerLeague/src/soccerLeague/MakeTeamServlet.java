@@ -51,7 +51,7 @@ public class MakeTeamServlet extends HttpServlet {
 	      System.out.println("about to make team");
 	      x.makeTeam(teamName,positions);
 	      System.out.println("made the team");
-	      resp.sendRedirect("/loggedIn.jsp");
+	      resp.sendRedirect("/index.jsp");
 	   
 	}
 

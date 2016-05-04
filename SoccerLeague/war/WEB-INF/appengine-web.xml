@@ -14,6 +14,7 @@
   </system-properties>
 
   <!--
+  http://1-dot-testsoccerleague.appspot.com/
     HTTP Sessions are disabled by default. To enable HTTP sessions specify:
 
       <sessions-enabled>true</sessions-enabled>

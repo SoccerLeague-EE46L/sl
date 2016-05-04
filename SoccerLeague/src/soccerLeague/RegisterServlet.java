@@ -58,7 +58,7 @@ public class RegisterServlet extends HttpServlet{
 		user.setBasicInfo(req.getParameter("first_name"),req.getParameter("last_name"),email,req.getParameter("phone_number"),req.getParameter("address"),positions);
 		System.out.println(req.getParameter("first_name")+req.getParameter("last_name")+email+req.getParameter("address")+req.getParameter("phone_number")+positions);
 		user.putRegisteredUserData();
-        resp.sendRedirect("/loggedIn.jsp");
+        resp.sendRedirect("/index.jsp");
 	}
 	public static String getEmail(){
 		  UserService userService = UserServiceFactory.getUserService();

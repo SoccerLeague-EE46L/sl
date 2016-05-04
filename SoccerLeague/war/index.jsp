@@ -9,6 +9,7 @@
 <%@ page import="soccerLeague.RegisteredUser" %>
 <%@ page import= "soccerLeague.SoccerPlayer" %>
 <%@ page import= "soccerLeague.SoccerTeam" %>
+<%@ page import= "soccerLeague.DataTransfer" %>
 <%@ page import= "com.googlecode.objectify.ObjectifyService" %> 
 
 
@@ -25,32 +26,54 @@
 	   <%
 	   
 	   ObjectifyService.register(RegisteredUser.class);
-	      ObjectifyService.register(SoccerPlayer.class);
-	      ObjectifyService.register(SoccerTeam.class); 
-	 
-	    %>
+	   ObjectifyService.register(SoccerPlayer.class);
+	   ObjectifyService.register(SoccerTeam.class);
+
+      UserService userService = UserServiceFactory.getUserService();
+      User user = userService.getCurrentUser();
+      DataTransfer myDataBase= DataTransfer.getDataTransfer();
+      String email;
+      if(user==null){
+      		email="notAnEmail";
+      	System.out.println(email);
+    	}
+  	  else{
+ 		   email=user.getEmail();
+          System.out.println(email);
+ 		}
+   	 
+    	%>
 		<header>
 			<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
 			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 				<nav><ul>
-					<li><a href="index.html">home</a></li>
+					<li><a href="index.jsp">home</a></li>
 					<li><a href="Statistics.jsp">Statistics</a></li>
 					<li><a href="calendar.jsp">calendar</a></li>
-					<li><a href="registration.jsp">Register</a></li>
 					<li><a href="contact.html">contact us</a></li>
-					<li><a href="LogIn.html">Log In</a></li>
-					<li><a href="soccerleague">SoccerLeague</a></li>
-					
+					<%if (user != null && myDataBase.isInDataBase(email)) {
+						%>
+						<li>
 						<div class="dropdown">
-						<button class="dropbtn">Admin</button>
+						<button class="dropbtn">Profile</button>
 						<div class="dropdown-content">
-						<a href="AdminTeam.jsp">Team Panel</a>
-						<a href="AdminPlayer.jsp">Player Panel</a>
-						<a href = "AdminSchedule.jsp">Schedule Event</a>
-		
+						<a href="profile.jsp">View Profile</a>
+						<a href="PersonalStats.jsp">Personal Stats</a>
+						<a href="teamStats.jsp">Team Stats</a>
+						<a href="teamForm.jsp">Make Team</a>
+						<a href="teamsNeedingPlayers.jsp">Look For Team</a>
 						</div>
 						</div>
-					
+						</li>
+						<%
+						}
+						else{
+						%>
+							<li><a href="registration.jsp">Register</a></li>
+							<li><a href="LogIn.html">Log In</a></li>
+						<%
+						}
+						%>					
 				</ul></nav>
 		</header>
 		<div>

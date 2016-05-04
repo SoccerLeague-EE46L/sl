@@ -25,7 +25,7 @@
 			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 	 
 	 <nav><ul>
-					<li><a href="index.html">home</a></li>
+					<li><a href="index.jsp">home</a></li>
 						<li><a href="Statistics.jsp">statistics</a></li>
 						<li><a href="calendar.html">calendar</a></li>
 						<li><a href="contact.html">contact us</a></li>
@@ -37,7 +37,7 @@
 						<a href="PersonalStats.jsp">Personal Stats</a>
 						<a href="teamStats.jsp">Team Stats</a>
 						<a href="teamForm.jsp">Make Team</a>
-						<a href="index.jsp">Look For Team</a>
+						<a href="teamsNeedingPlayers.jsp">Look For Team</a>
 						</div>
 						</div>
 						</li>
@@ -57,38 +57,42 @@
 	      DataTransfer myDataBase= DataTransfer.getDataTransfer();
 	      SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
 	     // System.out.println("ok getting the player worked");
-	     
+	     if(x.getTeam()==null){
+	     	%>
+	     	<h2>You are currently not associated with any team</h2>
+	     	<%
+	 		}
+	 		else{
 	     SoccerTeam team = myDataBase.getSoccerTeam(x.getTeam());	
-	     
-	   
 	      %>
-	      
 	  <p><b><%out.println(x.getTeam() + " Stats"); %></b>.</p>
 	<!-- table format -->  
-		<table border="1">
-		<tr>
-		<td>Wins:</td>
-		<td><%
-		
-		try{
-			out.print(team.getWins());
-		}catch(NullPointerException e){
-			out.print(0);
-		}
-		 %></td>
-		</tr>
-		<tr>
-		<td>Losses:</td>
-		<td><%
-		
-		try{
-			out.print(team.getLosses());
-		}catch(NullPointerException e){
-			out.print(0);
-		}
-		%></td>
-		</tr>
-		
-		</table>
+				<table border="1">
+				<tr>
+				<td>Wins:</td>
+				<td><%
+				
+				try{
+					out.print(team.getWins());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				<tr>
+				<td>Losses:</td>
+				<td><%
+				
+				try{
+					out.print(team.getLosses());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				%></td>
+				</tr>
+				</table>
+				<%
+			}
+			%>
 	      </body>
 	 </html>
