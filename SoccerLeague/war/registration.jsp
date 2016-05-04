@@ -11,30 +11,20 @@
   <%
       UserService userService = UserServiceFactory.getUserService();
       User user = userService.getCurrentUser();
-      String email;
-      if(user==null){
-      email="notAnEmail";
-      System.out.println(email);
-    	}
-    else{
-    email=user.getEmail();
-          System.out.println(email);
-  }
       DataTransfer myDataBase= DataTransfer.getDataTransfer();
-      System.out.println("testing statement after registration");
-      if (user != null && (!myDataBase.isInDataBase(email))) {
-		System.out.println("testing print statement: inside registration jsp");
-		response.sendRedirect("registrationForm.jsp");
-      %>
-  
-      	<%
-     }
-     else {
-  %>
+      if(user==null){
+        %>
   <p>
   <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
   with your Google account to register</p>
   <%
+ 	}  
+    else if (user != null && (!myDataBase.isInDataBase(user.getEmail()))) {
+		System.out.println("testing print statement: inside registration jsp");
+		response.sendRedirect("registrationForm.jsp");
+     }
+     else {
+		response.sendRedirect("index.jsp");
       }
   %>
     </body>

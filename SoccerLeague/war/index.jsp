@@ -78,6 +78,7 @@
 						</div>
 						</div>
 						</li>
+						<li><a href="logOut.jsp">Log Out</a></li>
 						<%
 						}
 						else{
