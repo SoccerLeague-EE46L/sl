@@ -42,8 +42,24 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/maketeam</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>AdminTeamUpdate</servlet-name>
+		<servlet-class>soccerLeague.AdminTeamUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminTeamUpdate</servlet-name>
+		<url-pattern>/adminteamupdate</url-pattern>
+	</servlet-mapping>
 
-
+		<servlet>
+		<servlet-name>AdminPlayerUpdate</servlet-name>
+		<servlet-class>soccerLeague.AdminPlayerUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdminPlayerUpdate</servlet-name>
+		<url-pattern>/adminplayerupdate</url-pattern>
+	</servlet-mapping>
+	
 
 
 
