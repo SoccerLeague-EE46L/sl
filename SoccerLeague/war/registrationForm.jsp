@@ -19,7 +19,7 @@
 					<li><a href="calendar.html">calendar</a></li>
 					<li><a href="registration.jsp">Register</a></li>
 					<li><a href="contact.html">contact us</a></li>
-					<li><a href="LogIn.html">Log In</a></li>
+					<li><a href="logIn.jsp">Log In</a></li>
 					
 					
 				</ul></nav>

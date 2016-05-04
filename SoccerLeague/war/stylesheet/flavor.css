@@ -24,6 +24,9 @@ header ul li{
 a{
 	color:white;
 }
+a.important{
+	color:red;
+}
 div{
 	color:red;
 }

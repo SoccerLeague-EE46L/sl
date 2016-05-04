@@ -44,11 +44,11 @@
 						<div class="dropdown-content">
 						<a href="profile.jsp">View Profile</a>
 						<a href="PersonalStats.jsp">Personal Stats</a>
-						<a href="teamStats.jsp">Team Stats</a>
+						<a href="teamStats.jsp">Team Stats</a>						
 					<%
 					if(x.isCoach()==true){
 					%>
-						<a href="PlayerNeedingTeam.jsp">Look For Players</a>
+						<a href="PlayersNeedingTeam.jsp">Look For Players</a>
 						<a href="teamsNeedingPlayers.jsp">Add Players</a>
 					<%
 					}
@@ -62,12 +62,13 @@
 						</div>
 						</div>
 						</li>
+						<li><a href="logOut.jsp">Log Out</a></li>
 						<%
 						}
 						else{
 						%>
 							<li><a href="registration.jsp">Register</a></li>
-							<li><a href="LogIn.html">Log In</a></li>
+							<li><a href="logIn.jsp">Log In</a></li>
 						<%
 						}
 						%>
