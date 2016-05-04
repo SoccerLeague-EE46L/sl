@@ -60,8 +60,21 @@
 						<a href="profile.jsp">View Profile</a>
 						<a href="PersonalStats.jsp">Personal Stats</a>
 						<a href="teamStats.jsp">Team Stats</a>
+						<%
+						SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
+						if(x.isCoach()==true){
+						%>
+							<a href="PlayersNeedingTeam.jsp">Look For Players</a>
+							<a href="teamsNeedingPlayers.jsp">Add Players</a>
+						<%
+						}
+						else{
+						%>
 						<a href="teamForm.jsp">Make Team</a>
 						<a href="teamsNeedingPlayers.jsp">Look For Team</a>
+						<%
+						}
+						%>
 						</div>
 						</div>
 						</li>

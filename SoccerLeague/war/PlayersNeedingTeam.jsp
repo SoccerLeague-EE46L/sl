@@ -25,36 +25,40 @@
 	      String email= user.getEmail();
 	      DataTransfer myDataBase= DataTransfer.getDataTransfer();
 	      SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
-	      List<SoccerTeam> teams= myDataBase.getAllSoccerTeams();
+	      List<SoccerPlayer> players= myDataBase.getAllSoccerPlayers();
 	     // System.out.println("ok getting the player worked");
 	      %>
 	      
-	  <p><b>Teams Looking For Players</b>.</p>
+	  <p><b>Players Looking For A Team</b>.</p>
 	<!-- table format -->  
 		<table border="1">
 
 		<tr>
-		<td>Team</td>
-		<td>Positions Needed</td>
-		<td>Coach Info</td>
+		<td>Name</td>
+		<td>Positions Played</td>
+		<td>Player Info</td>
 		</tr>
 		<tr>
 		<%
-		for(int i=0;i<teams.size();i++){
+		for(int ind=0; ind<players.size();ind++){System.out.println(players.get(ind).getFirstName());}
+		for(int i=0;i<players.size();i++){
 		%>
 		<tr>
 		<%
-			if(teams.get(i).needsPlayers()){
+			if(players.get(i).needsTeam()){
 			%>
-					<td><%out.print(teams.get(i).getTeamName()); %></td>
+					<td><%out.print(players.get(i).getFirstName()+ " "+players.get(i).getLastName() ); %></td>
 					<td><%
-					List pos= teams.get(i).getPosNeeded();
-					for(int k=0;k<pos.size();k++){
-					out.print(pos.get(k)+ " ");
+					System.out.println(players.get(i).getFirstName());
+					List pos= players.get(i).getPosition().getPositionsPlayed();
+					if(pos!=null){
+						for(int k=0;k<pos.size();k++){
+						out.print(pos.get(k)+ " ");
+						}
 					} 
 					%></td>
-					<td><%RegisteredUser coach=myDataBase.getRegisteredUserData(teams.get(i).getCoach());
-					out.print(coach.getFirstName()+ ": "+coach.getEmail());
+					<td><%
+					out.print(players.get(i).getEmail());
 					 %></td>
 			</tr>
 			<%

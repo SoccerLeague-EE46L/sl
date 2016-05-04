@@ -55,6 +55,9 @@ public class DataTransfer {
 		ofy().save().entity(x).now();
 		System.out.println("ok it was able to safe it");
 	}
+	public List<SoccerPlayer> getAllSoccerPlayers(){
+		return ofy().load().type(SoccerPlayer.class).list();
+	}
 	public void updateSoccerPlayerName(SoccerPlayer x, String update){
 		x.setFirstName(update);
 		ofy().save().entity(x).now();	

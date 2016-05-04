@@ -42,14 +42,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/maketeam</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>Lookforteam</servlet-name>
-		<servlet-class>soccerLeague.LookForTeamServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>Lookforteam</servlet-name>
-		<url-pattern>/lookforteam</url-pattern>
-	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>AdminTeamUpdate</servlet-name>

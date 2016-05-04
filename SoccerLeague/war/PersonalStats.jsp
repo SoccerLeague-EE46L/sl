@@ -20,43 +20,61 @@
 	</head>
 
 	<body>
-		<header>
-			<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
-			<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
-	 
-	 <nav><ul>
-					<li><a href="index.jsp">home</a></li>
-						<li><a href="statistics.html">statistics</a></li>
-						<li><a href="calendar.html">calendar</a></li>
-						<li><a href="contact.html">contact us</a></li>
-						<li>
-						<div class="dropdown">
-						<button class="dropbtn">Profile</button>
-						<div class="dropdown-content">
-						<a href="profile.jsp">View Profile</a>
-						<a href="PersonalStats.jsp">Personal Stats</a>
-						<a href="teamStats.jsp">Team Stats</a>
+	  <%
+      UserService userService = UserServiceFactory.getUserService();
+      User user = userService.getCurrentUser();
+      String email= user.getEmail();
+      DataTransfer myDataBase= DataTransfer.getDataTransfer();
+      SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
+     // System.out.println("ok getting the player worked");
+     
+      %>
+			<header>
+		<h1><center>Welcome to Austin Regional Soccer Association</center></h1>
+		<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
+			<nav><ul>
+				<li><a href="index.jsp">home</a></li>
+				<li><a href="Statistics.jsp">Statistics</a></li>
+				<li><a href="calendar.jsp">calendar</a></li>
+				<li><a href="contact.html">contact us</a></li>
+				<%if (user != null && myDataBase.isInDataBase(email)) {
+					%>
+					<li>
+					<div class="dropdown">
+					<button class="dropbtn">Profile</button>
+					<div class="dropdown-content">
+					<a href="profile.jsp">View Profile</a>
+					<a href="PersonalStats.jsp">Personal Stats</a>
+					<a href="teamStats.jsp">Team Stats</a>
+					<%
+					if(x.isCoach()==true){
+					%>
+						<a href="PlayerNeedingTeam.jsp">Look For Players</a>
+						<a href="teamsNeedingPlayers.jsp">Add Players</a>
+					<%
+					}
+					else{
+					%>
 						<a href="teamForm.jsp">Make Team</a>
 						<a href="teamsNeedingPlayers.jsp">Look For Team</a>
-						</div>
-						</div>
-						</li>
-						<li><a href="LogIn.html">Log Out</a></li>
-
-
-					
-				</ul></nav>
-	  <%
-	      UserService userService = UserServiceFactory.getUserService();
-	      User user = userService.getCurrentUser();
-	      String email= user.getEmail();
-	      DataTransfer myDataBase= DataTransfer.getDataTransfer();
-	      SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
-	     // System.out.println("ok getting the player worked");
-	     
-	    
-	     
-	      %>
+					<%
+					}
+					%>
+					</div>
+					</div>
+					</li>
+					<%
+					}
+					else{
+					%>
+						<li><a href="registration.jsp">Register</a></li>
+						<li><a href="LogIn.html">Log In</a></li>
+					<%
+					}
+					%>					
+			</ul></nav>
+	</header>
+		
 	      
 	  <p><b>Personal Stats</b>.</p>
 	<!-- table format -->  

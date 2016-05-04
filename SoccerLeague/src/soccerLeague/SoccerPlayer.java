@@ -26,8 +26,16 @@ public class SoccerPlayer extends RegisteredUser{
 	private String team;
 	private PersonalSoccerStats myStats;
 	private boolean isCoach;
+	private boolean needsTeam;
+	public boolean needsTeam() {
+		return needsTeam;
+	}
+	public void setNeedsTeam(boolean needsTeam) {
+		this.needsTeam = needsTeam;
+	}
 	public SoccerPlayer(){
-		setCoach(false);
+		this.isCoach=false;
+		this.needsTeam=true;
 	}
 	public boolean isCoach() {
 		return isCoach;
