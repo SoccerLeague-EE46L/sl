@@ -57,7 +57,7 @@
 					else{
 					%>
 						<a href="teamForm.jsp">Make Team</a>
-						<a href="teamsNeedingPlayers.jsp">Look For Team</a>
+						<a href="addPlayers.jsp">Look For Team</a>
 					<%
 					}
 					%>

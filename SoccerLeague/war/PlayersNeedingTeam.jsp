@@ -22,11 +22,15 @@
 
 	      UserService userService = UserServiceFactory.getUserService();
 	      User user = userService.getCurrentUser();
-	      String email= user.getEmail();
 	      DataTransfer myDataBase= DataTransfer.getDataTransfer();
+	      if(user==null || myDataBase.getSoccerPlayerData(user.getEmail()).isCoach()==false){
+				response.sendRedirect("index.jsp");
+	      }
+
+	      String email= user.getEmail();
 	      SoccerPlayer x=myDataBase.getSoccerPlayerData(email);
 	      List<SoccerPlayer> players= myDataBase.getAllSoccerPlayers();
-	     // System.out.println("ok getting the player worked");
+
 	      %>
 	      
 	  <p><b>Players Looking For A Team</b>.</p>

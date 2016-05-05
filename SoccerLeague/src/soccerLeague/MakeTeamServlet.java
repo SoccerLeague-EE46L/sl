@@ -30,7 +30,7 @@ public class MakeTeamServlet extends HttpServlet {
 			String[]sportPos =x.getSportPositions();
 			ArrayList<String> sports=new ArrayList<String>();
 			for(int k=0;k<sportPos.length;k++){
-				System.out.println(sportPos[k]);
+//				System.out.println(sportPos[k]);
 				sports.add(sportPos[k]);
 			}
 			ArrayList<String> positions= new ArrayList<String>();

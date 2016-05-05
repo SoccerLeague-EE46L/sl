@@ -2,6 +2,7 @@ package soccerLeague;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Embedded;
@@ -27,6 +28,7 @@ public class SoccerPlayer extends RegisteredUser{
 	private PersonalSoccerStats myStats;
 	private boolean isCoach;
 	private boolean needsTeam;
+	private List<String> requests= new ArrayList<String>();
 	public boolean needsTeam() {
 		return needsTeam;
 	}
@@ -122,9 +124,21 @@ public class SoccerPlayer extends RegisteredUser{
 	public String[] getSportPositions() {
 		return SoccerPlayer.avaiablePositions;
 	}
+	public void addRequest(String player){
+		if(requests.contains(player)){return;}
+		requests.add(player);
+		this.putRegisteredUserData();
+	}
+	public List<String> getRequests(){
+		return requests;
+	}
+	public void setRequest(List<String> requests){
+		this.requests=requests;
+	}
+	
 	//need a way to remove a teammate but only if you are the coach
-	public void removeTeamMate(){}
-	public void lookForTeam(){}
+//	public void removeTeamMate(){}
+//	public void lookForTeam(){}
 
 	
 	

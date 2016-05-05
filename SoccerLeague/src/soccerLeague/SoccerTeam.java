@@ -42,13 +42,13 @@ public class SoccerTeam {
 			System.out.println("gettimg positions is not a problem");
 			for(int i = 0; i<coachPosition.size();i++ )
 			{
-				if(coachPosition.get(i).equals("MidFielder"))
+				if(coachPosition.get(i).equals("midFielder"))
 					NumMidFielder++;
-				if(coachPosition.get(i).equals("Attacker"))
+				if(coachPosition.get(i).equals("attacker"))
 					NumAttacker++;
-				if(coachPosition.get(i).equals("Defender"))
+				if(coachPosition.get(i).equals("defender"))
 					NumDefender++;
-				if(coachPosition.get(i).equals("Goalie"))
+				if(coachPosition.get(i).equals("goalie"))
 					NumGoalie++;
 			}
 			Roster.add(Coach);
@@ -87,10 +87,22 @@ public class SoccerTeam {
 	public int getNumGoalie() {
 		return NumGoalie;
 	}
-	public void addPlayer(String player){
-		Roster.add(player);
+	public void addPlayer(List<String> players, String user){
+		System.out.println("am i going to return??");
+		System.out.println(user);
+		if(!user.equals(this.Coach)){return;}
+		System.out.println("no im not ");
+		for(int i=0;i<players.size();i++){
+		if(!Roster.contains(players.get(i))){
+		Roster.add(players.get(i));
+		SoccerPlayer player= myDataBase.getSoccerPlayerData(players.get(i));
+		player.setNeedsTeam(false);
+		player.setTeam(this.teamName);
+		myDataBase.putRegisteredUserData(player);
 		NumOfPlayers++;
-		incRosterAvailability(player);
+		incRosterAvailability(players.get(i));
+		}
+		}
 	}
 	private void incRosterAvailability(String x){
 		List<String> playerPosition = myDataBase.getSoccerPlayerData(x).getPosition().getPositionsPlayed();
@@ -126,9 +138,11 @@ public class SoccerTeam {
 		if(this.Coach.equals(email)){
 			this.removeCoach(email);
 		}
+		if(Roster.remove(email)){
 		decRosterAvailability(email);
 		this.NumOfPlayers--;
-		Roster.remove(email);
+		}
+		
 	}
 	public void removeCoach(String email) {
 		SoccerPlayer player=myDataBase.getSoccerPlayerData(email);

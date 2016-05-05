@@ -65,7 +65,7 @@
 						if(x.isCoach()==true){
 						%>
 							<a href="PlayersNeedingTeam.jsp">Look For Players</a>
-							<a href="teamsNeedingPlayers.jsp">Add Players</a>
+							<a href="addPlayers.jsp">Add Players</a>
 						<%
 						}
 						else{
