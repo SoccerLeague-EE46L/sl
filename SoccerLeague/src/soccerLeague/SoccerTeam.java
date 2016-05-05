@@ -9,7 +9,6 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Subclass;
 
-import soccerLeagueTest.SoccerTeamStats;
 @Entity
 //classes that implement an interface are saved as entities
 public class SoccerTeam {
@@ -181,6 +180,12 @@ public class SoccerTeam {
 		
 	}
 	
+public SoccerTeamStats getTeamStats() {
+		return teamStats;
+	}
+	public void setTeamStats(SoccerTeamStats teamStats) {
+		this.teamStats = teamStats;
+	}
 public String getHighestAssistScorer(){
 		
 		String curHighestEmail = Roster.get(0);

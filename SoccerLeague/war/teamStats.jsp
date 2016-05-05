@@ -9,6 +9,8 @@
 	<%@ page import= "soccerLeague.RegisteredUser" %>
 	<%@ page import="soccerLeague.SoccerPlayer"%>
 	<%@ page import="soccerLeague.SoccerTeam"%>
+	<%@ page import="soccerLeague.SoccerTeamStats"%>
+	
 
 
 
@@ -91,10 +93,44 @@
 	  <p><b><%out.println(x.getTeam() + " Stats"); %></b>.</p>
 	<!-- table format -->  
 				<table border="1">
+				
+				<tr>
+				<td>League Position:</td>
+				<td><%
+				try{
+					out.print(team.getTeamStats().getLeagueRank());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				
+				<tr>
+				<td>Points:</td>
+				<td><%
+				try{
+					out.print(team.getTeamStats().getPoints());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				
+				<tr>
+				<td>Games Played:</td>
+				<td><%
+				try{
+					out.print(team.getTeamStats().getGamesPlayed());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				
+				
 				<tr>
 				<td>Wins:</td>
 				<td><%
-				
 				try{
 					out.print(team.getWins());
 				}catch(NullPointerException e){
@@ -102,10 +138,22 @@
 				}
 				 %></td>
 				</tr>
+				
+				<tr>
+				<td>Draws:</td>
+				<td><%
+				try{
+					out.print(team.getTeamStats().getTies());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				
+				
 				<tr>
 				<td>Losses:</td>
 				<td><%
-				
 				try{
 					out.print(team.getLosses());
 				}catch(NullPointerException e){
@@ -113,6 +161,41 @@
 				}
 				%></td>
 				</tr>
+				
+				<tr>
+				<td>Goals Scored:</td>
+				<td><%
+				try{
+					out.print(team.getTeamStats().getGoalsScored());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				
+				<tr>
+				<td>Goals Received:</td>
+				<td><%
+				try{
+					out.print(team.getTeamStats().getGoalsReceived());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				<tr>
+				<td>Goal Difference:</td>
+				<td><%
+				try{
+					out.print(team.getTeamStats().getGoalDifference());
+				}catch(NullPointerException e){
+					out.print(0);
+				}
+				 %></td>
+				</tr>
+				
+				
+				
 				</table>
 				<%
 			}
