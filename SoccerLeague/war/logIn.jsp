@@ -96,8 +96,8 @@
 		 if(user==null){
         %>
 	<p>
-		<a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class= "important">Sign
-			in with your Google account to register</a>
+		<h2><a href="<%= userService.createLoginURL(request.getRequestURI()) %>" class= "important">Sign
+			in with your Google account to register</a></h2>
 	</p>
 	<%
  	}  

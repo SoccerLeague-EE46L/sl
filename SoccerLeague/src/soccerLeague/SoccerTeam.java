@@ -30,6 +30,7 @@ public class SoccerTeam {
 
 	private SoccerTeam(){}
 	public SoccerTeam(SoccerPlayer  coach, String teamName){
+		this.teamStats= new SoccerTeamStats();
 		this.teamName=teamName;
 		this.Coach = coach.getEmail();
 		this.needsPlayer=false;
