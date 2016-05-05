@@ -18,6 +18,7 @@ public class SoccerTeam {
 	@Id protected String teamName;
 	private static DataTransfer myDataBase = DataTransfer.getDataTransfer();
 	private String Coach;
+	private String[][] schedule = new String[12][31];
 	private int NumOfPlayers;
 	private List<String> Roster= new ArrayList<String>();
 	private  int NumMidFielder=0;
@@ -104,6 +105,11 @@ public class SoccerTeam {
 		incRosterAvailability(players.get(i));
 		}
 		}
+
+	}
+	public String[][] getSchedule(){
+		return schedule;
+
 	}
 	private void incRosterAvailability(String x){
 		List<String> playerPosition = myDataBase.getSoccerPlayerData(x).getPosition().getPositionsPlayed();
@@ -173,7 +179,39 @@ public class SoccerTeam {
 	public void setNeedsPlayers(boolean flag){
 		this.needsPlayer=flag;
 	}
-	
+	public void setSchedule(String month, int day, String time){
+		int monthint;
+		switch (month) {
+        case "January":  monthint = 0;
+                 break;
+        case "February":  monthint = 1;
+                 break;
+        case "March":  monthint = 2;
+                 break;
+        case "April":  monthint = 3;
+                 break;
+        case "May":  monthint = 4;
+                 break;
+        case "June":  monthint = 5;
+                 break;
+        case "July":  monthint = 6;
+                 break;
+        case "August":  monthint = 7;
+                 break;
+        case "September":  monthint = 8;
+                 break;
+        case "October":  monthint = 9;
+                 break;
+        case "November":  monthint = 10;
+                 break;
+        case "December":  monthint = 11;
+                 break;
+        default: monthint = 12;
+                 break;
+    }
+		schedule[monthint][day] = time;
+		schedule[monthint][day].concat("game at:");
+	}
 	public String getHighestGoalScorer(){
 		
 		String curHighestEmail = Roster.get(0);
