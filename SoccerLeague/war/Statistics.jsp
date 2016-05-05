@@ -9,6 +9,7 @@
   <%@ page import= "soccerLeague.SoccerLeague" %>
   <%@ page import= "soccerLeague.SoccerTeam" %>
   <%@ page import= "soccerLeague.SoccerPlayer" %>
+  <%@ page import= "java.util.*" %>
    
  
   
@@ -52,28 +53,46 @@
   <table>
     <thead>
         <th></th>
+        <th>league Position</th>
+        <th>Points</th>
+        <th>Games Played</th>
         <th>Wins</th>
+        <th>Draws</th>
         <th>Losses</th>
-        <th>Most Goals</th>
-        <th>Most Assists</th>
+        <th>Goals Scored</th>
+        <th>Goals Received</th>
+        <th>Goal Difference</th>
     </thead>
     <% try{
-    for(int i=0; i < myDataBase.getAllSoccerTeams().size(); i++) { %>
+    		
+    	TreeMap<Integer, String> tmap = new TreeMap<Integer, String>();
+ 
+    	for(int i=0; i<myDataBase.getAllSoccerTeams().size();i++){
+    		
+    		tmap.put(myDataBase.getAllSoccerTeams().get(i).getTeamStats().getPoints(), myDataBase.getAllSoccerTeams().get(i).getTeamName());   		
+    	}
+    	
+    for(Map.Entry<Integer, String> entry: tmap.entrySet()) { %>
     <tr>
     
     <%
-    	String mostGoals = myDataBase.getAllSoccerTeams().get(i).getHighestGoalScorer();
-    	SoccerPlayer mostGoalsUser = myDataBase.getSoccerPlayerData(mostGoals);
+    	String teamName = entry.getValue();
+    	Integer numGoals = entry.getKey();
     	
-    	String mostAssists = myDataBase.getAllSoccerTeams().get(i).getHighestAssistScorer();
-    	SoccerPlayer mostAssistUser= myDataBase.getSoccerPlayerData(mostAssists);
-    
+    	SoccerTeam team = myDataBase.getSoccerTeam(teamName);   
     %>
-        <th><%out.println(myDataBase.getAllSoccerTeams().get(i)); %></th>
-        <td><%out.println(myDataBase.getAllSoccerTeams().get(i).getWins()); %></td>
-        <td><%out.println(myDataBase.getAllSoccerTeams().get(i).getLosses()); %></td>
-        <td><%out.println(mostGoalsUser.getFirstName() + " " + mostGoalsUser.getLastName()); %>
-        <td><%out.println(mostAssistUser.getFirstName() + " " + mostAssistUser.getLastName()); %>
+        <th><%out.println(teamName); %></th>
+        <td><%out.println(team.getTeamStats().getPoints());%>
+        <td><%out.println(team.getTeamStats().getGamesPlayed());%>
+        <td><%out.println(team.getTeamStats().getWins());%>
+        <td><%out.println(team.getTeamStats().getTies());%>
+        <td><%out.println(team.getTeamStats().getLosses());%>
+        <td><%out.println(team.getTeamStats().getGoalsScored());%>
+        <td><%out.println(team.getTeamStats().getGoalsReceived());%>
+        <td><%out.println(team.getTeamStats().getGoalDifference());%>
+
+        
+     
     </tr>
   	<%}}catch(Exception e){response.sendRedirect("redirectFromStatistics.jsp");} %>
 </table>
