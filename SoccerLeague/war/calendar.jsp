@@ -13,6 +13,7 @@
   	<%@ page import="com.google.appengine.api.users.UserService" %>
   	<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
 	<%@ page import="java.util.List" %>
+	<%@ page import="java.util.ArrayList" %>
 <%@ include file="calendarCommon.jsp" %>
 
 <html>
@@ -53,10 +54,21 @@
    // {
    List<SoccerTeam> teams = myDataBase.getAllSoccerTeams();
     //}
+    for(int l = 0;l<teams.size();l++)
+    {
+    	teams.get(l).setSchedule("May", 14,"12:34");
+    }
+    List<String> pos = new ArrayList<String>();
+    SoccerPlayer player = new SoccerPlayer();
+    player.setPosition(pos);
+    SoccerTeam tester = new SoccerTeam(player, "bibbss");
+    tester.setSchedule("May", 14,"12:34");
   Month aMonth = Month.getMonth( Integer.parseInt(currentMonthString), Integer.parseInt(currentYearString) );
   int [][] days = aMonth.getDays();
   int t = 0;
   int games = 0;
+  String[][] test;
+  boolean gamer = true;
   for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
   {
     %><tr class="week_data_row"><%
@@ -72,14 +84,16 @@
         // this is "today"
         if( currentDayInt == days[i][j] && currentMonthInt == aMonth.getMonth() && currentYearInt == aMonth.getYear() )
         {
-        	for(t=0;t<teams.size();t++)
-        	{
-        	if(!((teams.get(t).getSchedule())[aMonth.getMonth()][(i*j)] ==null))
-        	{
-        		games++;
+        	//for(t=0;t<teams.size();t++)
+        	//{
+        		//test =teams.get(t).getSchedule();
+            	//gamer =	test[aMonth.getMonth()][(i*j)].equals(null);
+              //	if(gamer = false)
+        	//{
+        	//	games++;
          	
-        	}
-        	}
+        	//}
+        	//}
         	if(games > 0)
         	{
         		 %><td class="today_cell"><a href="calendar.html"><%=games%></a></td><%
@@ -92,13 +106,15 @@
         }
         else
         {
-        	for(t=0;t<teams.size();t++)
-        	{
-          	if(!((teams.get(t).getSchedule())[aMonth.getMonth()][(i*j)] ==null))
-        	{
-         	  games++;
-        	}
-        	}
+        	//for(t=0;t<teams.size();t++)
+        	//{
+        	//test =teams.get(t).getSchedule();
+        	//gamer =	test[aMonth.getMonth()][(i*j)].equals(null);
+          //	if(gamer = false)
+        	//{
+         	//  games++;
+        	//}
+        	//}
         	if(games >0)
         	{
         		%><td class="today_cell"><a href="Calendar.html"><%=teams.get(t).getSchedule()[aMonth.getMonth()][(i*j)]%></a></td><%	

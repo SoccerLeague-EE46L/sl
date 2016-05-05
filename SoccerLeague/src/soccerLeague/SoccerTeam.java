@@ -19,6 +19,7 @@ public class SoccerTeam {
 	private static DataTransfer myDataBase = DataTransfer.getDataTransfer();
 	private String Coach;
 	private String[][] schedule = new String[12][31];
+	private List<String> testSched = new ArrayList<String>(); 
 	private int NumOfPlayers;
 	private List<String> Roster= new ArrayList<String>();
 	private  int NumMidFielder=0;
@@ -31,6 +32,10 @@ public class SoccerTeam {
 
 	private SoccerTeam(){}
 	public SoccerTeam(SoccerPlayer  coach, String teamName){
+		for(int i = 0; i<12;i++)
+		{
+			testSched.add("game");
+		}
 		this.teamStats= new SoccerTeamStats();
 		this.teamName=teamName;
 		this.Coach = coach.getEmail();
@@ -110,6 +115,9 @@ public class SoccerTeam {
 	public String[][] getSchedule(){
 		return schedule;
 
+	}
+	public List<String> getTestSched(){
+		return testSched;
 	}
 	private void incRosterAvailability(String x){
 		List<String> playerPosition = myDataBase.getSoccerPlayerData(x).getPosition().getPositionsPlayed();
