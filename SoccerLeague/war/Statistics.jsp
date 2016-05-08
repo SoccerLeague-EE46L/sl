@@ -9,7 +9,7 @@
   <%@ page import= "soccerLeague.SoccerLeague" %>
   <%@ page import= "soccerLeague.SoccerTeam" %>
   <%@ page import= "soccerLeague.SoccerPlayer" %>
-  <%@ page import= "java.util.*" %>
+  <%@ page import= "java.util.List" %>
    
  
   
@@ -26,79 +26,101 @@
 		<img src="/stylesheet/wallpaper.jpg" height="500" width="2000">
 </header>
 <%
-	UserService userService;
-	DataTransfer myDataBase= DataTransfer.getDataTransfer();
-	
-	User user;
-	SoccerPlayer x;
-	
-	try{
-	    userService = UserServiceFactory.getUserService();
-		user = userService.getCurrentUser();
-		String email= user.getEmail();
-		x=	myDataBase.getSoccerPlayerData(email);
-		
-	} catch(Exception e){}
-	
-	
-// 	if (user != null && !(myDataBase.isInDataBase(email)))
-// 	{
-// 		System.out.println("going to stats cause they are already in the system");
-// 		response.sendRedirect("PersonalStats.jsp");
-// 	}
 
+	DataTransfer myDataBase= DataTransfer.getDataTransfer();	
 %>
 
   <p><b>Statistics</b></p>
-  <table>
-    <thead>
-        <th></th>
-        <th>league Position</th>
-        <th>Points</th>
-        <th>Games Played</th>
-        <th>Wins</th>
-        <th>Draws</th>
-        <th>Losses</th>
-        <th>Goals Scored</th>
-        <th>Goals Received</th>
-        <th>Goal Difference</th>
-    </thead>
-    <% try{
-    		
-    	TreeMap<Integer, String> tmap = new TreeMap<Integer, String>();
- 
-    	for(int i=0; i<myDataBase.getAllSoccerTeams().size();i++){
-    		
-    		tmap.put(myDataBase.getAllSoccerTeams().get(i).getTeamStats().getPoints(), myDataBase.getAllSoccerTeams().get(i).getTeamName());   		
+  <table border="1">
+  		<tr>
+  		<td>Team</td>
+        <td>Position</td>
+        <td>Points</td>
+        <td>Games Played</td>
+        <td>Wins</td>
+        <td>Draws</td>
+        <td>Losses</td>
+        <td>Goals Scored</td>
+        <td>Goals Received</td>
+        <td>Goal Difference</td>
+        </tr>
+ <%
+		List<SoccerTeam> teams= myDataBase.getAllSoccerTeams();
+  	 	//sorting teams by amount of points//
+    	for(int i=0; i<teams.size();i++) {
+    		for(int k=0;k<teams.size();k++){
+    			if(teams.get(k).getTeamStats().getPoints()>teams.get(i).getTeamStats().getPoints()){
+    				SoccerTeam temp= teams.get(i);
+    				teams.set(i,teams.get(k));
+    				teams.set(k,temp);	
+    			}
+    		}	
     	}
-    	
-    for(Map.Entry<Integer, String> entry: tmap.entrySet()) { %>
+    	for(int j=0; j<teams.size();j++){
+    	SoccerTeam team= teams.get(j);
+    	%>
     <tr>
-    
-    <%
-    	String teamName = entry.getValue();
-    	Integer numGoals = entry.getKey();
-    	
-    	SoccerTeam team = myDataBase.getSoccerTeam(teamName);   
-    %>
-        <th><%out.println(teamName); %></th>
-        <td><%out.println(team.getTeamStats().getPoints());%>
-        <td><%out.println(team.getTeamStats().getGamesPlayed());%>
-        <td><%out.println(team.getTeamStats().getWins());%>
-        <td><%out.println(team.getTeamStats().getTies());%>
-        <td><%out.println(team.getTeamStats().getLosses());%>
-        <td><%out.println(team.getTeamStats().getGoalsScored());%>
-        <td><%out.println(team.getTeamStats().getGoalsReceived());%>
-        <td><%out.println(team.getTeamStats().getGoalDifference());%>
-
-        
-     
+        <td><%out.println(team.getTeamName()); %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getLeagueRank()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getPoints()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getGamesPlayed()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getWins()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getTies()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getLosses()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getGoalsScored()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getGoalsReceived()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
+        <td><%try{
+        out.println(team.getTeamStats().getGoalDifference()); 
+        }catch(NullPointerException e){
+        out.println(0);	
+        }
+        %></td>
     </tr>
-  	<%}}catch(Exception e){response.sendRedirect("redirectFromStatistics.jsp");} %>
+    <% }
+    	%>
 </table>
 
 
-<button type="submit">Sign Up</button>
 
 </body>
 </html>
