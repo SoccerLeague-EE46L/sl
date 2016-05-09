@@ -23,20 +23,6 @@ public class PlayerTest {
 		
 	}
 
-//	@Test
-//	public void testGetPositionsPlayed()
-//	{
-//		ArrayList<String> positions = new ArrayList<String>();
-//		positions.add("Midfield");
-//		positions.add("Defender");
-//		positions.add("Forward");
-//		
-//		SoccerPosition pos = new SoccerPosition(positions);
-//		SoccerPlayer testPlayer = new SoccerPlayer();
-//		testPlayer.setPosition(pos);
-//		assertEquals(positions,testPlayer.getPositionsPlayed());
-//	}
-
 
 	@Test
 	public void testGetJerseyNumber() {
@@ -67,16 +53,7 @@ public class PlayerTest {
 	}
 
 
-//	@Test
-//	public void testMakeTeam() {
-//		SoccerPlayer testPlayer = new SoccerPlayer();
-//		testPlayer.makeTeam("Team Team!");
-//		myData.getSoccerTeam("Team Team");
-//		String string = "Team Team";
-//		assertTrue(string.equals(testPlayer.getTeam()));
-//		
-//		
-//	}
+
 
 	@Test
 	public void testLeaveTeam() {
