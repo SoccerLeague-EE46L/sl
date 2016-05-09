@@ -8,7 +8,7 @@
 
 <html>
 <head>
-  <title>devdaily.com calendar</title>
+  <title>Calendar</title>
   <link rel="StyleSheet" href="/blog/calendar.css" type="text/css" media="screen" />
 </head>
 
@@ -22,40 +22,39 @@
     </td>
   </tr>
   <tr class="week_header_row">
-    <th width="14%" class="th_day_cell day">Sun</th>
-    <th width="14%" class="th_day_cell day">Mon</th>
-    <th width="14%" class="th_day_cell day">Tue</th>
-    <th width="14%" class="th_day_cell day">Wed</th>
-    <th width="14%" class="th_day_cell day">Thu</th>
-    <th width="15%" class="th_day_cell day">Fri</th>
-    <th width="15%" class="th_day_cell day">Sat</th>
+    <th width="14%" class="thdaycell day">Sun</th>
+    <th width="14%" class="thdaycell day">Mon</th>
+    <th width="14%" class="thdaycell day">Tue</th>
+    <th width="14%" class="thdaycell day">Wed</th>
+    <th width="14%" class="thdaycell day">Thu</th>
+    <th width="15%" class="thdaycell day">Fri</th>
+    <th width="15%" class="thdaycell day">Sat</th>
   </tr>
 <%
-{
+	{
   Month aMonth = Month.getMonth( Integer.parseInt(currentMonthString), Integer.parseInt(currentYearString) );
   int [][] days = aMonth.getDays();
-  for( int i=0; i<aMonth.getNumberOfWeeks(); i++ )
+  for( int i=0; i<aMonth.getnofweeks(); i++ )
   {
-    %><tr class="week_data_row"><%
+%><tr class="weekdatarow"><%
     for( int j=0; j<7; j++ )
     {
       if( days[i][j] == 0 )
       {
-        %><td class="empty_day_cell">&nbsp;</td><%
+        %><td class="emptydaycell">&nbsp;</td><%
       }
       else
       {
-        // this is "today"
         if( currentDayInt == days[i][j] && currentMonthInt == aMonth.getMonth() && currentYearInt == aMonth.getYear() )
         {
-          %><td class="today_cell"><%=days[i][j]%></td><%
+          %><td class="todaycell"><%=days[i][j]%></td><%
         }
         else
         {
-          %><td class="day_cell"><%=days[i][j]%></td><%
+          %><td class="daycell"><%=days[i][j]%></td><%
         }
-      } // end outer if
-    } // end for
+      } 
+    } 
     %>
     </tr>
   <%}
@@ -63,11 +62,10 @@
 %>
 </table>
 
-<%-- end of "calendar_div" --%>
+
 </div>
 
-<!-- navigation links -->
-<%-- sorry, i don't know how to get this look without a table --%>
+
 <table id="calendar_nav_table" border="0">
   <tr>
     <td id="prev_link">
@@ -78,8 +76,6 @@
       </form>
     </td>
     <td id="link_to_month_view">
-      <form action="calendarMonthPrintView.jsp" method="post">
-        <input type="submit" value="  Full-Screen Print View  " class="submit_button">
         <input type="hidden" name="month" value="<%=intMonth%>">
         <input type="hidden" name="year"  value="<%=intYear%>">
       </form>
@@ -93,7 +89,7 @@
     </td>
   </tr>
 </table>
-  <!-- navigation links end -->
+
 
 </body>
 </html>

@@ -5,10 +5,11 @@ import java.util.HashMap;
 
 public class Month
 {
-  private int month;
-  private int year;
-  private int days[][];
-  private int numberOfWeeks;
+  private int mon;
+  private int yr;
+  private int dy[][];
+  private int schedule[][];
+  private int numoweeks;
   private static HashMap months = new HashMap();
 
   private Month()
@@ -18,16 +19,16 @@ public class Month
 
   private Month(int month, int year)
   {
-    days = new int[6][7];
-    numberOfWeeks = 0;
-    this.month = month;
-    this.year = year;
-    buildWeeks();
+    dy = new int[6][7];
+    numoweeks = 0;
+    this.mon = month;
+    this.yr = year;
+    buildw();
   }
 
   public int getMonth()
   {
-    return month;
+    return mon;
   }
 
   public static Month getMonth(int month, int year)
@@ -45,21 +46,21 @@ public class Month
     }
   }
 
-  private void buildWeeks()
+  private void buildw()
   {
     Calendar c = Calendar.getInstance();
     c.setFirstDayOfWeek(1);
-    c.set(year, month, 1);
-    for (; c.get(2) == month; c.add(5, 1))
+    c.set(yr, mon, 1);
+    for (; c.get(2) == mon; c.add(5, 1))
     {
       int weekNumber = c.get(4) - 1;
-      int dayOfWeek = calculateDay(c.get(7));
-      days[weekNumber][dayOfWeek] = c.get(5);
-      numberOfWeeks = weekNumber;
+      int dayOfWeek = calcDay(c.get(7));
+      dy[weekNumber][dayOfWeek] = c.get(5);
+      numoweeks = weekNumber;
     }
   }
 
-  public int calculateDay(int day)
+  public int calcDay(int day)
   {
     if (day == 1)
       return 0;
@@ -78,17 +79,17 @@ public class Month
 
   public int[][] getDays()
   {
-    return days;
+    return dy;
   }
 
-  public int getNumberOfWeeks()
+  public int getnofweeks()
   {
-    return numberOfWeeks + 1;
+    return numoweeks + 1;
   }
 
   public int getYear()
   {
-    return year;
+    return yr;
   }
 
 }
